@@ -9,12 +9,21 @@
 /* Begin PBXBuildFile section */
 		521E40BE1E09259400E2B00F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40BD1E09259400E2B00F /* main.m */; };
 		521E40C11E09259400E2B00F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40C01E09259400E2B00F /* AppDelegate.m */; };
-		521E40C41E09259400E2B00F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40C31E09259400E2B00F /* ViewController.m */; };
 		521E40C71E09259400E2B00F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521E40C51E09259400E2B00F /* Main.storyboard */; };
 		521E40C91E09259400E2B00F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 521E40C81E09259400E2B00F /* Assets.xcassets */; };
 		521E40CC1E09259400E2B00F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521E40CA1E09259400E2B00F /* LaunchScreen.storyboard */; };
 		521E40D71E09259400E2B00F /* ENOEclipseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40D61E09259400E2B00F /* ENOEclipseTests.m */; };
 		521E40E21E09259400E2B00F /* ENOEclipseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40E11E09259400E2B00F /* ENOEclipseUITests.m */; };
+		521E40FA1E0928B700E2B00F /* MainMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40F91E0928B700E2B00F /* MainMenuVC.m */; };
+		521E40FF1E092A0000E2B00F /* LanternVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40FC1E092A0000E2B00F /* LanternVC.m */; };
+		521E41001E092A0000E2B00F /* LavaLampVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40FE1E092A0000E2B00F /* LavaLampVC.m */; };
+		521E41031E092CA300E2B00F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E41021E092CA300E2B00F /* BaseViewController.m */; };
+		521E41061E092DA600E2B00F /* PickColorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E41051E092DA600E2B00F /* PickColorVC.m */; };
+		521E41091E092DF900E2B00F /* EmergencyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E41081E092DF900E2B00F /* EmergencyVC.m */; };
+		521E410C1E092E5000E2B00F /* PowerSwicth.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E410B1E092E5000E2B00F /* PowerSwicth.m */; };
+		521E410F1E092E7200E2B00F /* SleepTimeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E410E1E092E7200E2B00F /* SleepTimeVC.m */; };
+		521E41121E092E9B00E2B00F /* FavoritesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E41111E092E9B00E2B00F /* FavoritesVC.m */; };
+		521E41151E092EC000E2B00F /* BLEConnectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E41141E092EC000E2B00F /* BLEConnectVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +48,6 @@
 		521E40BD1E09259400E2B00F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		521E40BF1E09259400E2B00F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		521E40C01E09259400E2B00F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		521E40C21E09259400E2B00F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		521E40C31E09259400E2B00F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		521E40C61E09259400E2B00F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		521E40C81E09259400E2B00F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		521E40CB1E09259400E2B00F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +58,27 @@
 		521E40DD1E09259400E2B00F /* ENOEclipseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ENOEclipseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		521E40E11E09259400E2B00F /* ENOEclipseUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ENOEclipseUITests.m; sourceTree = "<group>"; };
 		521E40E31E09259400E2B00F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521E40F81E0928B700E2B00F /* MainMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuVC.h; sourceTree = "<group>"; };
+		521E40F91E0928B700E2B00F /* MainMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuVC.m; sourceTree = "<group>"; };
+		521E40FB1E092A0000E2B00F /* LanternVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanternVC.h; sourceTree = "<group>"; };
+		521E40FC1E092A0000E2B00F /* LanternVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanternVC.m; sourceTree = "<group>"; };
+		521E40FD1E092A0000E2B00F /* LavaLampVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LavaLampVC.h; sourceTree = "<group>"; };
+		521E40FE1E092A0000E2B00F /* LavaLampVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LavaLampVC.m; sourceTree = "<group>"; };
+		521E41011E092CA300E2B00F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		521E41021E092CA300E2B00F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		521E41041E092DA600E2B00F /* PickColorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickColorVC.h; sourceTree = "<group>"; };
+		521E41051E092DA600E2B00F /* PickColorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickColorVC.m; sourceTree = "<group>"; };
+		521E41071E092DF900E2B00F /* EmergencyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmergencyVC.h; sourceTree = "<group>"; };
+		521E41081E092DF900E2B00F /* EmergencyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmergencyVC.m; sourceTree = "<group>"; };
+		521E410A1E092E5000E2B00F /* PowerSwicth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerSwicth.h; sourceTree = "<group>"; };
+		521E410B1E092E5000E2B00F /* PowerSwicth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerSwicth.m; sourceTree = "<group>"; };
+		521E410D1E092E7200E2B00F /* SleepTimeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleepTimeVC.h; sourceTree = "<group>"; };
+		521E410E1E092E7200E2B00F /* SleepTimeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepTimeVC.m; sourceTree = "<group>"; };
+		521E41101E092E9B00E2B00F /* FavoritesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesVC.h; sourceTree = "<group>"; };
+		521E41111E092E9B00E2B00F /* FavoritesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesVC.m; sourceTree = "<group>"; };
+		521E41131E092EC000E2B00F /* BLEConnectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEConnectVC.h; sourceTree = "<group>"; };
+		521E41141E092EC000E2B00F /* BLEConnectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEConnectVC.m; sourceTree = "<group>"; };
+		521E41161E09322B00E2B00F /* CommonDefined.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefined.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +129,9 @@
 		521E40BB1E09259400E2B00F /* ENOEclipse */ = {
 			isa = PBXGroup;
 			children = (
+				521E40F11E09262200E2B00F /* Classes */,
 				521E40BF1E09259400E2B00F /* AppDelegate.h */,
 				521E40C01E09259400E2B00F /* AppDelegate.m */,
-				521E40C21E09259400E2B00F /* ViewController.h */,
-				521E40C31E09259400E2B00F /* ViewController.m */,
 				521E40C51E09259400E2B00F /* Main.storyboard */,
 				521E40C81E09259400E2B00F /* Assets.xcassets */,
 				521E40CA1E09259400E2B00F /* LaunchScreen.storyboard */,
@@ -138,6 +165,66 @@
 				521E40E31E09259400E2B00F /* Info.plist */,
 			);
 			path = ENOEclipseUITests;
+			sourceTree = "<group>";
+		};
+		521E40F11E09262200E2B00F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				521E40F61E09287D00E2B00F /* Common */,
+				521E40F71E09287D00E2B00F /* ViewController */,
+				521E40F41E0927FB00E2B00F /* Server */,
+				521E40F51E0927FB00E2B00F /* ThirdCode */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		521E40F41E0927FB00E2B00F /* Server */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		521E40F51E0927FB00E2B00F /* ThirdCode */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdCode;
+			sourceTree = "<group>";
+		};
+		521E40F61E09287D00E2B00F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				521E41011E092CA300E2B00F /* BaseViewController.h */,
+				521E41021E092CA300E2B00F /* BaseViewController.m */,
+				521E41161E09322B00E2B00F /* CommonDefined.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		521E40F71E09287D00E2B00F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				521E40F81E0928B700E2B00F /* MainMenuVC.h */,
+				521E40F91E0928B700E2B00F /* MainMenuVC.m */,
+				521E40FB1E092A0000E2B00F /* LanternVC.h */,
+				521E40FC1E092A0000E2B00F /* LanternVC.m */,
+				521E40FD1E092A0000E2B00F /* LavaLampVC.h */,
+				521E40FE1E092A0000E2B00F /* LavaLampVC.m */,
+				521E41041E092DA600E2B00F /* PickColorVC.h */,
+				521E41051E092DA600E2B00F /* PickColorVC.m */,
+				521E41071E092DF900E2B00F /* EmergencyVC.h */,
+				521E41081E092DF900E2B00F /* EmergencyVC.m */,
+				521E410A1E092E5000E2B00F /* PowerSwicth.h */,
+				521E410B1E092E5000E2B00F /* PowerSwicth.m */,
+				521E410D1E092E7200E2B00F /* SleepTimeVC.h */,
+				521E410E1E092E7200E2B00F /* SleepTimeVC.m */,
+				521E41101E092E9B00E2B00F /* FavoritesVC.h */,
+				521E41111E092E9B00E2B00F /* FavoritesVC.m */,
+				521E41131E092EC000E2B00F /* BLEConnectVC.h */,
+				521E41141E092EC000E2B00F /* BLEConnectVC.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,9 +363,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521E40C41E09259400E2B00F /* ViewController.m in Sources */,
+				521E41091E092DF900E2B00F /* EmergencyVC.m in Sources */,
 				521E40C11E09259400E2B00F /* AppDelegate.m in Sources */,
+				521E410C1E092E5000E2B00F /* PowerSwicth.m in Sources */,
+				521E410F1E092E7200E2B00F /* SleepTimeVC.m in Sources */,
+				521E41031E092CA300E2B00F /* BaseViewController.m in Sources */,
+				521E41121E092E9B00E2B00F /* FavoritesVC.m in Sources */,
+				521E40FA1E0928B700E2B00F /* MainMenuVC.m in Sources */,
+				521E41061E092DA600E2B00F /* PickColorVC.m in Sources */,
+				521E41001E092A0000E2B00F /* LavaLampVC.m in Sources */,
 				521E40BE1E09259400E2B00F /* main.m in Sources */,
+				521E40FF1E092A0000E2B00F /* LanternVC.m in Sources */,
+				521E41151E092EC000E2B00F /* BLEConnectVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,9 +523,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SA6BGR8N24;
 				INFOPLIST_FILE = ENOEclipse/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ENOTest.ENOEclipse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -439,9 +537,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SA6BGR8N24;
 				INFOPLIST_FILE = ENOEclipse/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ENOTest.ENOEclipse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -514,6 +614,7 @@
 				521E40E81E09259400E2B00F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		521E40E91E09259400E2B00F /* Build configuration list for PBXNativeTarget "ENOEclipseTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +623,7 @@
 				521E40EB1E09259400E2B00F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		521E40EC1E09259400E2B00F /* Build configuration list for PBXNativeTarget "ENOEclipseUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +632,7 @@
 				521E40EE1E09259400E2B00F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
