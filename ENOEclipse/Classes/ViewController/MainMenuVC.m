@@ -22,12 +22,13 @@
     NSArray *imgList;
     UIView *midView;
     UIView *frontView;
+    
+    UIButton *bt_selected;
 }
 
 
 @end
 
-#define BUTTON_HEIGHT 80
 
 @implementation MainMenuVC
 
@@ -39,6 +40,8 @@
     CGRect rect = self.view.frame;
     CGFloat width = CGRectGetWidth(rect);
     CGFloat height = CGRectGetHeight(rect);
+    NSInteger bt_h = height/7;
+    NSInteger bt_h_bottom = bt_h*0.75;
     
     //设置导航栏图片
     //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_logo"] forBarMetrics:UIBarMetricsDefault];
@@ -50,11 +53,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     //中间展示
-    midView = [[UIView alloc] initWithFrame:CGRectMake(0, BUTTON_HEIGHT+64, width, height-2*BUTTON_HEIGHT-64)];
+    midView = [[UIView alloc] initWithFrame:CGRectMake(0, bt_h+64, width, height-bt_h-bt_h_bottom-64)];
     midView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:midView];
     
-    CGRect rectMid = CGRectMake(0, 0, width, height-2*BUTTON_HEIGHT-64);
+    CGRect rectMid = CGRectMake(0, 0, width, height-bt_h-bt_h_bottom-64);
     //白光+呼吸模式
     LanternVC *lanternVC = [[LanternVC alloc] initWithFrame:rectMid];
     [self addChildViewController:lanternVC];
@@ -87,25 +90,41 @@
     BLEConnectVC *bLEConnectVC = [[BLEConnectVC alloc] initWithFrame:rectMid];
     [self addChildViewController:bLEConnectVC];
     
-    [self showVc:0];
     
     //八个功能按钮
-    CGFloat w = width/4;
+    NSInteger w = width/4;
+    NSInteger bottom_h = bt_h;
     for (int i=0; i<8; i++) {
         int row = i;
         CGFloat y = 64;
         if (i > 3) {
             row -= 4;
-            y = height - BUTTON_HEIGHT;
+            bottom_h = bt_h_bottom;
+            y = height - bottom_h;
+            //分割线
+            if (row>0) {
+                UIView *cutLine = [[UIView alloc] initWithFrame:CGRectMake(row*w, y-0.5, 0.5, bottom_h)];
+                cutLine.backgroundColor = [UIColor colorCutLine];
+                [self.view addSubview:cutLine];
+            }
         }
-        UIButton *bt = [[UIButton alloc] initWithFrame:CGRectMake(row*w, y, w, BUTTON_HEIGHT)];
+        UIButton *bt = [[UIButton alloc] initWithFrame:CGRectMake(row*w, y, w, bottom_h)];
         NSString *strImg = imgList[i];
         [bt setImage:[UIImage imageNamed:strImg] forState:UIControlStateNormal];
         [bt setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_light",strImg]] forState:UIControlStateHighlighted];
+        [bt setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_light",strImg]] forState:UIControlStateSelected];
         [bt addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
-        bt.tag = i;
+        bt.tag = i+10000;
         [self.view addSubview:bt];
     }
+    //分割线
+    UIView *cutLine = [[UIView alloc] initWithFrame:CGRectMake(0, height-bottom_h-0.5, width, 0.5)];
+    cutLine.backgroundColor = [UIColor colorCutLine];
+    [self.view addSubview:cutLine];
+    
+    //显示第一页
+    [self showVc:10000];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,18 +137,18 @@
     [self showVc:tag];
 }
 
--(void)showVc:(NSInteger)index
-{
-    if (index>=self.childViewControllers.count) {
-        return;
-    }
+-(void)showVc:(NSInteger)index {
+    //切换按钮的高亮状态
+    bt_selected.selected = NO;
+    bt_selected = (UIButton *)[self.view viewWithTag:index];
+    bt_selected.selected = YES;
     
-    UIViewController *vc = self.childViewControllers[index];
+    UIViewController *vc = self.childViewControllers[index-10000];
     UIView *view = vc.view;
-    [midView addSubview:view];
-    return;
-    if (vc.isViewLoaded) {
-        [view bringSubviewToFront:frontView];
+    
+    BOOL isContain = [[midView subviews] containsObject:view];
+    if (isContain) {
+        [midView bringSubviewToFront:view];
     }
     else {
         [midView addSubview:view];

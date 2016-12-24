@@ -16,8 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor = [UIColor orangeColor];
+    
+    CGRect rect = CGRectMake(0, 0, widthView, widthView*0.8);
+    UIView *view = [[UIView alloc] initWithFrame:rect];
+    view.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:view];
+    
+    //亮度
+    [self addLanternSlider];
+//    CGRect frame = CGRectMake(VIEW_MARGIN, CGRectGetMaxY(rect)+25, widthView - VIEW_MARGIN*2, 20);
+//    [self addLanternSliderWithFrame:frame];
+    
+    //速度
+    [self addSpeedSlider];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,14 +36,30 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+////亮度
+//- (void)addLanternSliderWithFrame:(CGRect)frame  {
+//    UISlider * slider = [[UISlider alloc] initWithFrame:frame];
+//    slider.minimumValue = 0;
+//    slider.maximumValue = 1;
+//    slider.value = 0.5;
+//    slider.continuous = NO;//默认YES  如果设置为NO，则每次滑块停止移动后才触发事件
+//    [slider addTarget:self action:@selector(sliderChangeLantern:) forControlEvents:UIControlEventValueChanged];
+//    slider.minimumTrackTintColor = [UIColor colorMainLight];
+//    slider.maximumTrackTintColor = [UIColor colorGragLight];
+//    slider.thumbTintColor = [UIColor colorGrag];
+//    
+//    UIImage * image1 = [UIImage imageNamed:@"light_dark"];
+//    UIImage * image2 = [UIImage imageNamed:@"light_bright"];
+//    slider.minimumValueImage = image1;
+//    slider.maximumValueImage = image2;
+//    [self.view addSubview:slider];
+//}
+//
+//- (void)sliderChangeLantern:(UISlider *)sender {
+//    CGFloat value = sender.value;
+//    NSLog(@"%f", value);
+//}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

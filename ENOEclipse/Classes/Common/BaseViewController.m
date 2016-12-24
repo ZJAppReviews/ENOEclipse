@@ -16,14 +16,18 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super init]) {
-        self.view.frame = frame;
+        rectView = frame;
+        widthView = CGRectGetWidth(rectView);
+        heightView = CGRectGetHeight(rectView);
+        self.view.frame = rectView;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,14 +35,54 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//亮度
+- (void)addLanternSlider {
+    CGRect frame = CGRectMake(VIEW_MARGIN, heightView-95, widthView - VIEW_MARGIN*2, 20);
+    UISlider * slider = [[UISlider alloc] initWithFrame:frame];
+    slider.minimumValue = 0;
+    slider.maximumValue = 1;
+    slider.value = 0.5;
+    slider.continuous = NO;//默认YES  如果设置为NO，则每次滑块停止移动后才触发事件
+    [slider addTarget:self action:@selector(sliderChangeLantern:) forControlEvents:UIControlEventValueChanged];
+    slider.minimumTrackTintColor = [UIColor colorMainLight];
+    slider.maximumTrackTintColor = [UIColor colorGragLight];
+    slider.thumbTintColor = [UIColor colorGrag];
+    
+    UIImage * image1 = [UIImage imageNamed:@"light_dark"];
+    UIImage * image2 = [UIImage imageNamed:@"light_bright"];
+    slider.minimumValueImage = image1;
+    slider.maximumValueImage = image2;
+    [self.view addSubview:slider];
 }
-*/
+
+- (void)sliderChangeLantern:(UISlider *)sender {
+    CGFloat value = sender.value;
+    NSLog(@"%f", value);
+}
+
+//速度
+- (void)addSpeedSlider {
+    CGRect speedFrame = CGRectMake(VIEW_MARGIN, heightView-55, widthView - VIEW_MARGIN*2, 20);
+    UISlider * speedSlider = [[UISlider alloc] initWithFrame:speedFrame];
+    speedSlider.minimumValue = 0;
+    speedSlider.maximumValue = 1;
+    speedSlider.value = 0.2;
+    speedSlider.continuous = NO;//默认YES  如果设置为NO，则每次滑块停止移动后才触发事件
+    [speedSlider addTarget:self action:@selector(sliderChangeSpeed:) forControlEvents:UIControlEventValueChanged];
+    speedSlider.minimumTrackTintColor = [UIColor colorMainLight];
+    speedSlider.maximumTrackTintColor = [UIColor colorGragLight];
+    speedSlider.thumbTintColor = [UIColor colorGrag];
+    
+    UIImage * image3 = [UIImage imageNamed:@"speed_snow"];
+    UIImage * image4 = [UIImage imageNamed:@"speed_fast"];
+    speedSlider.minimumValueImage = image3;
+    speedSlider.maximumValueImage = image4;
+    [self.view addSubview:speedSlider];
+}
+
+- (void)sliderChangeSpeed:(UISlider *)sender {
+    CGFloat value = sender.value;
+    NSLog(@"%f", value);
+}
 
 @end

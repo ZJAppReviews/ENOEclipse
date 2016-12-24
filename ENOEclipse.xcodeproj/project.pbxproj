@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30B863E21E0EB85B0099E7BC /* UIColor+YY.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B863E11E0EB85B0099E7BC /* UIColor+YY.m */; };
 		521E40BE1E09259400E2B00F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40BD1E09259400E2B00F /* main.m */; };
 		521E40C11E09259400E2B00F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40C01E09259400E2B00F /* AppDelegate.m */; };
 		521E40C71E09259400E2B00F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521E40C51E09259400E2B00F /* Main.storyboard */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30B863E01E0EB85B0099E7BC /* UIColor+YY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YY.h"; sourceTree = "<group>"; };
+		30B863E11E0EB85B0099E7BC /* UIColor+YY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YY.m"; sourceTree = "<group>"; };
 		521E40B91E09259400E2B00F /* ENOEclipse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ENOEclipse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		521E40BD1E09259400E2B00F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		521E40BF1E09259400E2B00F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 				521E41011E092CA300E2B00F /* BaseViewController.h */,
 				521E41021E092CA300E2B00F /* BaseViewController.m */,
 				521E41161E09322B00E2B00F /* CommonDefined.h */,
+				30B863E01E0EB85B0099E7BC /* UIColor+YY.h */,
+				30B863E11E0EB85B0099E7BC /* UIColor+YY.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -369,6 +374,7 @@
 				521E410F1E092E7200E2B00F /* SleepTimeVC.m in Sources */,
 				521E41031E092CA300E2B00F /* BaseViewController.m in Sources */,
 				521E41121E092E9B00E2B00F /* FavoritesVC.m in Sources */,
+				30B863E21E0EB85B0099E7BC /* UIColor+YY.m in Sources */,
 				521E40FA1E0928B700E2B00F /* MainMenuVC.m in Sources */,
 				521E41061E092DA600E2B00F /* PickColorVC.m in Sources */,
 				521E41001E092A0000E2B00F /* LavaLampVC.m in Sources */,

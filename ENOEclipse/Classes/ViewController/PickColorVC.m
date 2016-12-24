@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blueColor];
+    
+    //亮度
+    [self addLanternSlider];
+    //速度
+    [self addSpeedSlider];
 }
 
 - (void)didReceiveMemoryWarning {

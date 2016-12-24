@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor brownColor];
+    
+    
+    
+    //速度
+    [self addSpeedSlider];
 }
 
 - (void)didReceiveMemoryWarning {
