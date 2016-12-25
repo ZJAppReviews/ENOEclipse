@@ -9,6 +9,7 @@
 #ifndef CommonDefined_h
 #define CommonDefined_h
 
+#define PI 3.14159265358979323846
 
 //按钮高度
 #define BUTTON_HEIGHT 80

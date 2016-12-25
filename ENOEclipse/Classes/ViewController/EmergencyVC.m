@@ -16,22 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor grayColor];
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, widthView*0.6, widthView*0.6)];
+    imgView.image = [UIImage imageNamed:@"mm_emergency_light"];
+    imgView.center = CGPointMake(widthView/2, heightView/2);
+    [self.view addSubview:imgView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

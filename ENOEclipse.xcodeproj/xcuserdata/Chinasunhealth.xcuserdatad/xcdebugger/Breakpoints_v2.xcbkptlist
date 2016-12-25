@@ -9,14 +9,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/ViewController/MainMenuVC.m"
-            timestampString = "504289527.975823"
+            filePath = "ENOEclipse/AppDelegate.h"
+            timestampString = "504378106.400296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-showVc:"
-            landmarkType = "7">
+            startingLineNumber = "18"
+            endingLineNumber = "18">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

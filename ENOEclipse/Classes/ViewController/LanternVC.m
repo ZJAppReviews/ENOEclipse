@@ -17,10 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGRect rect = CGRectMake(0, 0, widthView, widthView*0.8);
-    UIView *view = [[UIView alloc] initWithFrame:rect];
-    view.backgroundColor = [UIColor orangeColor];
-    [self.view addSubview:view];
+//    CGRect rect = CGRectMake(0, 0, widthView, widthView*0.8);
+//    UIView *view = [[UIView alloc] initWithFrame:rect];
+//    view.backgroundColor = [UIColor orangeColor];
+//    [self.view addSubview:view];
+    [self addCircle];
     
     //亮度
     [self addLanternSlider];
@@ -35,6 +36,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)addCircle {
+    /*
+     *画实线圆
+     */
+    CAShapeLayer *solidLine =  [CAShapeLayer layer];
+    CGMutablePathRef solidPath =  CGPathCreateMutable();
+    solidLine.lineWidth = 2.0f ;
+    solidLine.strokeColor = [UIColor colorMainLight].CGColor;
+    solidLine.fillColor = [UIColor clearColor].CGColor;
+    CGPathAddEllipseInRect(solidPath, nil, CGRectMake(widthView*0.2, widthView*0.1, widthView*0.6, widthView*0.6));
+    solidLine.path = solidPath;
+    CGPathRelease(solidPath);
+    [self.view.layer addSublayer:solidLine];
+}
+
 
 ////亮度
 //- (void)addLanternSliderWithFrame:(CGRect)frame  {

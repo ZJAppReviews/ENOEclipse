@@ -16,7 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor greenColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    UILabel *lb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, widthView-VIEW_MARGIN*2, 30)];
+    lb.center = CGPointMake(widthView/2, heightView/2);
+    lb.text = @"关闭灯";
+    lb.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:lb];
 }
 
 - (void)didReceiveMemoryWarning {

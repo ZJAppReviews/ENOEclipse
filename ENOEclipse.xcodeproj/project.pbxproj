@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30B0E6021E1033F300843316 /* YYAshapelGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B0E6011E1033F300843316 /* YYAshapelGradientView.m */; };
 		30B863E21E0EB85B0099E7BC /* UIColor+YY.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B863E11E0EB85B0099E7BC /* UIColor+YY.m */; };
 		521E40BE1E09259400E2B00F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40BD1E09259400E2B00F /* main.m */; };
 		521E40C11E09259400E2B00F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40C01E09259400E2B00F /* AppDelegate.m */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30B0E6001E1033F300843316 /* YYAshapelGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYAshapelGradientView.h; sourceTree = "<group>"; };
+		30B0E6011E1033F300843316 /* YYAshapelGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYAshapelGradientView.m; sourceTree = "<group>"; };
 		30B863E01E0EB85B0099E7BC /* UIColor+YY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YY.h"; sourceTree = "<group>"; };
 		30B863E11E0EB85B0099E7BC /* UIColor+YY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YY.m"; sourceTree = "<group>"; };
 		521E40B91E09259400E2B00F /* ENOEclipse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ENOEclipse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +112,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30B0E5E21E10336400843316 /* ThirdCode */ = {
+			isa = PBXGroup;
+			children = (
+				30B0E6001E1033F300843316 /* YYAshapelGradientView.h */,
+				30B0E6011E1033F300843316 /* YYAshapelGradientView.m */,
+			);
+			path = ThirdCode;
+			sourceTree = "<group>";
+		};
+		30B0E5FF1E1033B900843316 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
 		521E40B01E09259400E2B00F = {
 			isa = PBXGroup;
 			children = (
@@ -173,26 +192,12 @@
 		521E40F11E09262200E2B00F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				30B0E5FF1E1033B900843316 /* Server */,
+				30B0E5E21E10336400843316 /* ThirdCode */,
 				521E40F61E09287D00E2B00F /* Common */,
 				521E40F71E09287D00E2B00F /* ViewController */,
-				521E40F41E0927FB00E2B00F /* Server */,
-				521E40F51E0927FB00E2B00F /* ThirdCode */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		521E40F41E0927FB00E2B00F /* Server */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Server;
-			sourceTree = "<group>";
-		};
-		521E40F51E0927FB00E2B00F /* ThirdCode */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ThirdCode;
 			sourceTree = "<group>";
 		};
 		521E40F61E09287D00E2B00F /* Common */ = {
@@ -377,6 +382,7 @@
 				30B863E21E0EB85B0099E7BC /* UIColor+YY.m in Sources */,
 				521E40FA1E0928B700E2B00F /* MainMenuVC.m in Sources */,
 				521E41061E092DA600E2B00F /* PickColorVC.m in Sources */,
+				30B0E6021E1033F300843316 /* YYAshapelGradientView.m in Sources */,
 				521E41001E092A0000E2B00F /* LavaLampVC.m in Sources */,
 				521E40BE1E09259400E2B00F /* main.m in Sources */,
 				521E40FF1E092A0000E2B00F /* LanternVC.m in Sources */,

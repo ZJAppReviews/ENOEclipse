@@ -37,7 +37,7 @@
 
 //亮度
 - (void)addLanternSlider {
-    CGRect frame = CGRectMake(VIEW_MARGIN, heightView-95, widthView - VIEW_MARGIN*2, 20);
+    CGRect frame = CGRectMake(VIEW_MARGIN, heightView-105, widthView - VIEW_MARGIN*2, 20);
     UISlider * slider = [[UISlider alloc] initWithFrame:frame];
     slider.minimumValue = 0;
     slider.maximumValue = 1;
@@ -62,7 +62,7 @@
 
 //速度
 - (void)addSpeedSlider {
-    CGRect speedFrame = CGRectMake(VIEW_MARGIN, heightView-55, widthView - VIEW_MARGIN*2, 20);
+    CGRect speedFrame = CGRectMake(VIEW_MARGIN, heightView-50, widthView - VIEW_MARGIN*2, 20);
     UISlider * speedSlider = [[UISlider alloc] initWithFrame:speedFrame];
     speedSlider.minimumValue = 0;
     speedSlider.maximumValue = 1;
