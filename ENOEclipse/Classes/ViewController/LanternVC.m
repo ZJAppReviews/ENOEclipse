@@ -8,7 +8,9 @@
 
 #import "LanternVC.h"
 
-@interface LanternVC ()
+@interface LanternVC () {
+    UIImageView *imgCircle;
+}
 
 @end
 
@@ -17,16 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    CGRect rect = CGRectMake(0, 0, widthView, widthView*0.8);
-//    UIView *view = [[UIView alloc] initWithFrame:rect];
-//    view.backgroundColor = [UIColor orangeColor];
-//    [self.view addSubview:view];
-    [self addCircle];
+    CGRect rect = CGRectMake(widthView*0.1, 0, widthView*0.8, widthView*0.8);
+    imgCircle = [[UIImageView alloc] initWithFrame:rect];
+    [self.view addSubview:imgCircle];
+    imgCircle.image = [UIImage imageNamed:@"circle5"];
+    
+//    [self addCircle];
     
     //亮度
     [self addLanternSlider];
-//    CGRect frame = CGRectMake(VIEW_MARGIN, CGRectGetMaxY(rect)+25, widthView - VIEW_MARGIN*2, 20);
-//    [self addLanternSliderWithFrame:frame];
     
     //速度
     [self addSpeedSlider];
@@ -53,29 +54,13 @@
 }
 
 
-////亮度
-//- (void)addLanternSliderWithFrame:(CGRect)frame  {
-//    UISlider * slider = [[UISlider alloc] initWithFrame:frame];
-//    slider.minimumValue = 0;
-//    slider.maximumValue = 1;
-//    slider.value = 0.5;
-//    slider.continuous = NO;//默认YES  如果设置为NO，则每次滑块停止移动后才触发事件
-//    [slider addTarget:self action:@selector(sliderChangeLantern:) forControlEvents:UIControlEventValueChanged];
-//    slider.minimumTrackTintColor = [UIColor colorMainLight];
-//    slider.maximumTrackTintColor = [UIColor colorGragLight];
-//    slider.thumbTintColor = [UIColor colorGrag];
-//    
-//    UIImage * image1 = [UIImage imageNamed:@"light_dark"];
-//    UIImage * image2 = [UIImage imageNamed:@"light_bright"];
-//    slider.minimumValueImage = image1;
-//    slider.maximumValueImage = image2;
-//    [self.view addSubview:slider];
-//}
-//
-//- (void)sliderChangeLantern:(UISlider *)sender {
-//    CGFloat value = sender.value;
-//    NSLog(@"%f", value);
-//}
+- (void)sliderChangeLantern:(UISlider *)sender {
+    CGFloat value = sender.value*10;
+    NSLog(@"%f", value);
+    
+    int index = (int)value;
+    imgCircle.image = [UIImage imageNamed:[NSString stringWithFormat: @"circle%d",index]];
+}
 
 
 

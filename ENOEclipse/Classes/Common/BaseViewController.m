@@ -8,7 +8,9 @@
 
 #import "BaseViewController.h"
 
-@interface BaseViewController ()
+@interface BaseViewController () {
+    UISlider * sliderCircle;
+}
 
 @end
 
@@ -38,21 +40,21 @@
 //亮度
 - (void)addLanternSlider {
     CGRect frame = CGRectMake(VIEW_MARGIN, heightView-105, widthView - VIEW_MARGIN*2, 20);
-    UISlider * slider = [[UISlider alloc] initWithFrame:frame];
-    slider.minimumValue = 0;
-    slider.maximumValue = 1;
-    slider.value = 0.5;
-    slider.continuous = NO;//默认YES  如果设置为NO，则每次滑块停止移动后才触发事件
-    [slider addTarget:self action:@selector(sliderChangeLantern:) forControlEvents:UIControlEventValueChanged];
-    slider.minimumTrackTintColor = [UIColor colorMainLight];
-    slider.maximumTrackTintColor = [UIColor colorGragLight];
-    slider.thumbTintColor = [UIColor colorGrag];
+    sliderCircle = [[UISlider alloc] initWithFrame:frame];
+    sliderCircle.minimumValue = 0.1;
+    sliderCircle.maximumValue = 1;
+    sliderCircle.value = 0.5;
+    sliderCircle.continuous = NO;//默认YES  如果设置为NO，则每次滑块停止移动后才触发事件
+    [sliderCircle addTarget:self action:@selector(sliderChangeLantern:) forControlEvents:UIControlEventValueChanged];
+    sliderCircle.minimumTrackTintColor = [UIColor colorMainLight];
+    sliderCircle.maximumTrackTintColor = [UIColor colorGragLight];
+    sliderCircle.thumbTintColor = [UIColor colorGrag];
     
     UIImage * image1 = [UIImage imageNamed:@"light_dark"];
     UIImage * image2 = [UIImage imageNamed:@"light_bright"];
-    slider.minimumValueImage = image1;
-    slider.maximumValueImage = image2;
-    [self.view addSubview:slider];
+    sliderCircle.minimumValueImage = image1;
+    sliderCircle.maximumValueImage = image2;
+    [self.view addSubview:sliderCircle];
 }
 
 - (void)sliderChangeLantern:(UISlider *)sender {

@@ -43,11 +43,11 @@
 
 /*
  分割线颜色
- 色值：0xf5f5f5
+ 色值：0xdddddd
  用途：
  */
 + (UIColor *)colorCutLine {
-    return [UIColor colorWithHex:0xf5f5f5];
+    return [UIColor colorWithHex:0xdddddd];
 }
 
 /*
