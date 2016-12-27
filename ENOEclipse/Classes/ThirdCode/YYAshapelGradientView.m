@@ -91,7 +91,7 @@
     _slider = [[UISlider alloc] initWithFrame:CGRectMake(0, frame.size.width - 40 ,frame.size.width, 40)];
     _slider.continuous = YES;
     [_slider addTarget:self action:@selector(log) forControlEvents:UIControlEventValueChanged];
-    [self addSubview:_slider];
+//    [self addSubview:_slider];
     
     return self;
 }
@@ -216,5 +216,8 @@
  } 
  */
 
+- (void)setValue:(CGFloat)value {
+    _progressLayer.strokeEnd = value;
+}
 
 @end

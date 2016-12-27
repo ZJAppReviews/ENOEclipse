@@ -27,5 +27,7 @@
 @property (nonatomic,strong)UIView *bgView;//大view
 @property (nonatomic,strong)UILabel *biggerLabel;//大标题 label
 
+//值
+@property (nonatomic,assign)CGFloat value;
 
 @end

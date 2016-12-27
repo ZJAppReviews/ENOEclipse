@@ -97,6 +97,20 @@
     for (int i=0; i<8; i++) {
         int row = i;
         CGFloat y = 64;
+        
+        //分割图
+        if (i<3) {
+            NSInteger h = bt_h*0.3;
+            NSUInteger x = w/2+26 + row*w;
+            NSUInteger y = 64+(bt_h-h)/2;
+            NSUInteger w_line = w-51;
+            CGRect rect1 = CGRectMake(x, y, w_line, h);
+            UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:rect1];
+            imgView1.image = [UIImage imageNamed:@"mm_line"];
+            [self.view addSubview:imgView1];
+        }
+        
+        
         if (i > 3) {
             row -= 4;
             bottom_h = bt_h_bottom;
@@ -113,9 +127,11 @@
         [bt setImage:[UIImage imageNamed:strImg] forState:UIControlStateNormal];
         [bt setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_light",strImg]] forState:UIControlStateHighlighted];
         [bt setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_light",strImg]] forState:UIControlStateSelected];
+        bt.backgroundColor = [UIColor clearColor];
         [bt addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
         bt.tag = i+10000;
         [self.view addSubview:bt];
+        
     }
     //分割线
     UIView *cutLine = [[UIView alloc] initWithFrame:CGRectMake(0, height-bottom_h-0.5, width, 0.5)];
@@ -138,6 +154,9 @@
 }
 
 -(void)showVc:(NSInteger)index {
+    if (index == 10004) {
+        return;
+    }
     //切换按钮的高亮状态
     bt_selected.selected = NO;
     bt_selected = (UIButton *)[self.view viewWithTag:index];
@@ -154,9 +173,6 @@
         [midView addSubview:view];
     }
     frontView = view;
-    //    vc.view.frame = CGRectMake(offsetX, 0, self.contentScrollView.bounds.size.width, self.contentScrollView.bounds.size.height);
-    
-    
 }
 
 

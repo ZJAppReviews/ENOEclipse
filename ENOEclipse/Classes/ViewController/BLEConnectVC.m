@@ -63,6 +63,7 @@
     bt.layer.borderColor = [UIColor colorMainLight].CGColor;
     bt.layer.cornerRadius = 30;
     [bt setTitleColor:[UIColor colorMainLight] forState:UIControlStateNormal];
+    [bt setTitleColor:[UIColor colorGrag] forState:UIControlStateHighlighted];
     [bt setTitle:@"CONNECT" forState:UIControlStateNormal];
     
     [bt addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];

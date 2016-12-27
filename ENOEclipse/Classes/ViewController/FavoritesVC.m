@@ -28,6 +28,7 @@
     bt.layer.borderColor = [UIColor colorMainLight].CGColor;
     bt.layer.cornerRadius = 40;
     [bt setTitleColor:[UIColor colorMainLight] forState:UIControlStateNormal];
+    [bt setTitleColor:[UIColor colorGrag] forState:UIControlStateHighlighted];
     [bt setTitle:@"SAVE SURRENT" forState:UIControlStateNormal];
     bt.titleLabel.font = [UIFont systemFontOfSize:26];
     [bt addTarget:self action:@selector(clickeSave:) forControlEvents:UIControlEventTouchUpInside];
@@ -87,6 +88,7 @@
     bt.layer.borderColor = [UIColor colorMainLight].CGColor;
     bt.layer.cornerRadius = 30;
     [bt setTitleColor:[UIColor colorMainLight] forState:UIControlStateNormal];
+    [bt setTitleColor:[UIColor colorGrag] forState:UIControlStateHighlighted];
     [bt setTitle:@"LOAD" forState:UIControlStateNormal];
     [bt addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
     [cell.contentView addSubview:bt];

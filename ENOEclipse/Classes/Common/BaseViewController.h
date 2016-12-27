@@ -12,8 +12,8 @@
 
 @interface BaseViewController : UIViewController {
     CGRect rectView;
-    NSInteger widthView;
-    NSInteger heightView;
+    int widthView;
+    int heightView;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame;
