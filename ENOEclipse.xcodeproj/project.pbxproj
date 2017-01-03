@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30B0E6021E1033F300843316 /* YYAshapelGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B0E6011E1033F300843316 /* YYAshapelGradientView.m */; };
 		30B863E21E0EB85B0099E7BC /* UIColor+YY.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B863E11E0EB85B0099E7BC /* UIColor+YY.m */; };
 		521E40BE1E09259400E2B00F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40BD1E09259400E2B00F /* main.m */; };
 		521E40C11E09259400E2B00F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E40C01E09259400E2B00F /* AppDelegate.m */; };
@@ -26,6 +25,20 @@
 		521E410F1E092E7200E2B00F /* SleepTimeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E410E1E092E7200E2B00F /* SleepTimeVC.m */; };
 		521E41121E092E9B00E2B00F /* FavoritesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E41111E092E9B00E2B00F /* FavoritesVC.m */; };
 		521E41151E092EC000E2B00F /* BLEConnectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 521E41141E092EC000E2B00F /* BLEConnectVC.m */; };
+		6AB2A7951E1B946000F01E9D /* BabyBluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7791E1B946000F01E9D /* BabyBluetooth.m */; };
+		6AB2A7961E1B946000F01E9D /* BabyCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A77B1E1B946000F01E9D /* BabyCallback.m */; };
+		6AB2A7971E1B946000F01E9D /* BabyCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A77D1E1B946000F01E9D /* BabyCentralManager.m */; };
+		6AB2A7981E1B946000F01E9D /* BabyOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A77F1E1B946000F01E9D /* BabyOptions.m */; };
+		6AB2A7991E1B946000F01E9D /* BabyPeripheralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7811E1B946000F01E9D /* BabyPeripheralManager.m */; };
+		6AB2A79A1E1B946000F01E9D /* BabyRhythm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7831E1B946000F01E9D /* BabyRhythm.m */; };
+		6AB2A79B1E1B946000F01E9D /* BabySpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7851E1B946000F01E9D /* BabySpeaker.m */; };
+		6AB2A79C1E1B946000F01E9D /* BabyToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7871E1B946000F01E9D /* BabyToy.m */; };
+		6AB2A79D1E1B946000F01E9D /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A78B1E1B946000F01E9D /* SVIndefiniteAnimatedView.m */; };
+		6AB2A79E1E1B946000F01E9D /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6AB2A78D1E1B946000F01E9D /* SVProgressHUD.bundle */; };
+		6AB2A79F1E1B946000F01E9D /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A78F1E1B946000F01E9D /* SVProgressHUD.m */; };
+		6AB2A7A01E1B946000F01E9D /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7911E1B946000F01E9D /* SVRadialGradientLayer.m */; };
+		6AB2A7A11E1B946000F01E9D /* YYAshapelGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7941E1B946000F01E9D /* YYAshapelGradientView.m */; };
+		6AB2A7A61E1B94A200F01E9D /* BLEService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7A51E1B94A200F01E9D /* BLEService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +59,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		30B0E6001E1033F300843316 /* YYAshapelGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYAshapelGradientView.h; sourceTree = "<group>"; };
-		30B0E6011E1033F300843316 /* YYAshapelGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYAshapelGradientView.m; sourceTree = "<group>"; };
 		30B863E01E0EB85B0099E7BC /* UIColor+YY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YY.h"; sourceTree = "<group>"; };
 		30B863E11E0EB85B0099E7BC /* UIColor+YY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YY.m"; sourceTree = "<group>"; };
 		521E40B91E09259400E2B00F /* ENOEclipse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ENOEclipse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +96,35 @@
 		521E41131E092EC000E2B00F /* BLEConnectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEConnectVC.h; sourceTree = "<group>"; };
 		521E41141E092EC000E2B00F /* BLEConnectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEConnectVC.m; sourceTree = "<group>"; };
 		521E41161E09322B00E2B00F /* CommonDefined.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefined.h; sourceTree = "<group>"; };
+		6AB2A7781E1B946000F01E9D /* BabyBluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyBluetooth.h; sourceTree = "<group>"; };
+		6AB2A7791E1B946000F01E9D /* BabyBluetooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyBluetooth.m; sourceTree = "<group>"; };
+		6AB2A77A1E1B946000F01E9D /* BabyCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCallback.h; sourceTree = "<group>"; };
+		6AB2A77B1E1B946000F01E9D /* BabyCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyCallback.m; sourceTree = "<group>"; };
+		6AB2A77C1E1B946000F01E9D /* BabyCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCentralManager.h; sourceTree = "<group>"; };
+		6AB2A77D1E1B946000F01E9D /* BabyCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyCentralManager.m; sourceTree = "<group>"; };
+		6AB2A77E1E1B946000F01E9D /* BabyOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyOptions.h; sourceTree = "<group>"; };
+		6AB2A77F1E1B946000F01E9D /* BabyOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyOptions.m; sourceTree = "<group>"; };
+		6AB2A7801E1B946000F01E9D /* BabyPeripheralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPeripheralManager.h; sourceTree = "<group>"; };
+		6AB2A7811E1B946000F01E9D /* BabyPeripheralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyPeripheralManager.m; sourceTree = "<group>"; };
+		6AB2A7821E1B946000F01E9D /* BabyRhythm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyRhythm.h; sourceTree = "<group>"; };
+		6AB2A7831E1B946000F01E9D /* BabyRhythm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyRhythm.m; sourceTree = "<group>"; };
+		6AB2A7841E1B946000F01E9D /* BabySpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabySpeaker.h; sourceTree = "<group>"; };
+		6AB2A7851E1B946000F01E9D /* BabySpeaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabySpeaker.m; sourceTree = "<group>"; };
+		6AB2A7861E1B946000F01E9D /* BabyToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyToy.h; sourceTree = "<group>"; };
+		6AB2A7871E1B946000F01E9D /* BabyToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyToy.m; sourceTree = "<group>"; };
+		6AB2A78A1E1B946000F01E9D /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		6AB2A78B1E1B946000F01E9D /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		6AB2A78C1E1B946000F01E9D /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		6AB2A78D1E1B946000F01E9D /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		6AB2A78E1E1B946000F01E9D /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		6AB2A78F1E1B946000F01E9D /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		6AB2A7901E1B946000F01E9D /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		6AB2A7911E1B946000F01E9D /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		6AB2A7931E1B946000F01E9D /* YYAshapelGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYAshapelGradientView.h; sourceTree = "<group>"; };
+		6AB2A7941E1B946000F01E9D /* YYAshapelGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYAshapelGradientView.m; sourceTree = "<group>"; };
+		6AB2A7A41E1B94A200F01E9D /* BLEService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEService.h; sourceTree = "<group>"; };
+		6AB2A7A51E1B94A200F01E9D /* BLEService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEService.m; sourceTree = "<group>"; };
+		6AB2A7A71E1B961300F01E9D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,17 +155,11 @@
 		30B0E5E21E10336400843316 /* ThirdCode */ = {
 			isa = PBXGroup;
 			children = (
-				30B0E6001E1033F300843316 /* YYAshapelGradientView.h */,
-				30B0E6011E1033F300843316 /* YYAshapelGradientView.m */,
+				6AB2A7761E1B946000F01E9D /* BLE */,
+				6AB2A7881E1B946000F01E9D /* SVProgressHUD-master */,
+				6AB2A7921E1B946000F01E9D /* YYAshapel */,
 			);
 			path = ThirdCode;
-			sourceTree = "<group>";
-		};
-		30B0E5FF1E1033B900843316 /* Server */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Server;
 			sourceTree = "<group>";
 		};
 		521E40B01E09259400E2B00F = {
@@ -159,6 +193,7 @@
 				521E40CA1E09259400E2B00F /* LaunchScreen.storyboard */,
 				521E40CD1E09259400E2B00F /* Info.plist */,
 				521E40BC1E09259400E2B00F /* Supporting Files */,
+				6AB2A7A71E1B961300F01E9D /* PrefixHeader.pch */,
 			);
 			path = ENOEclipse;
 			sourceTree = "<group>";
@@ -192,7 +227,7 @@
 		521E40F11E09262200E2B00F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				30B0E5FF1E1033B900843316 /* Server */,
+				6AB2A7A21E1B94A200F01E9D /* Services */,
 				30B0E5E21E10336400843316 /* ThirdCode */,
 				521E40F61E09287D00E2B00F /* Common */,
 				521E40F71E09287D00E2B00F /* ViewController */,
@@ -235,6 +270,86 @@
 				521E41141E092EC000E2B00F /* BLEConnectVC.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6AB2A7761E1B946000F01E9D /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				6AB2A7771E1B946000F01E9D /* BabyBluetooth */,
+			);
+			path = BLE;
+			sourceTree = "<group>";
+		};
+		6AB2A7771E1B946000F01E9D /* BabyBluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				6AB2A7781E1B946000F01E9D /* BabyBluetooth.h */,
+				6AB2A7791E1B946000F01E9D /* BabyBluetooth.m */,
+				6AB2A77A1E1B946000F01E9D /* BabyCallback.h */,
+				6AB2A77B1E1B946000F01E9D /* BabyCallback.m */,
+				6AB2A77C1E1B946000F01E9D /* BabyCentralManager.h */,
+				6AB2A77D1E1B946000F01E9D /* BabyCentralManager.m */,
+				6AB2A77E1E1B946000F01E9D /* BabyOptions.h */,
+				6AB2A77F1E1B946000F01E9D /* BabyOptions.m */,
+				6AB2A7801E1B946000F01E9D /* BabyPeripheralManager.h */,
+				6AB2A7811E1B946000F01E9D /* BabyPeripheralManager.m */,
+				6AB2A7821E1B946000F01E9D /* BabyRhythm.h */,
+				6AB2A7831E1B946000F01E9D /* BabyRhythm.m */,
+				6AB2A7841E1B946000F01E9D /* BabySpeaker.h */,
+				6AB2A7851E1B946000F01E9D /* BabySpeaker.m */,
+				6AB2A7861E1B946000F01E9D /* BabyToy.h */,
+				6AB2A7871E1B946000F01E9D /* BabyToy.m */,
+			);
+			path = BabyBluetooth;
+			sourceTree = "<group>";
+		};
+		6AB2A7881E1B946000F01E9D /* SVProgressHUD-master */ = {
+			isa = PBXGroup;
+			children = (
+				6AB2A7891E1B946000F01E9D /* SVProgressHUD */,
+			);
+			path = "SVProgressHUD-master";
+			sourceTree = "<group>";
+		};
+		6AB2A7891E1B946000F01E9D /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				6AB2A78A1E1B946000F01E9D /* SVIndefiniteAnimatedView.h */,
+				6AB2A78B1E1B946000F01E9D /* SVIndefiniteAnimatedView.m */,
+				6AB2A78C1E1B946000F01E9D /* SVProgressHUD-Prefix.pch */,
+				6AB2A78D1E1B946000F01E9D /* SVProgressHUD.bundle */,
+				6AB2A78E1E1B946000F01E9D /* SVProgressHUD.h */,
+				6AB2A78F1E1B946000F01E9D /* SVProgressHUD.m */,
+				6AB2A7901E1B946000F01E9D /* SVRadialGradientLayer.h */,
+				6AB2A7911E1B946000F01E9D /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		6AB2A7921E1B946000F01E9D /* YYAshapel */ = {
+			isa = PBXGroup;
+			children = (
+				6AB2A7931E1B946000F01E9D /* YYAshapelGradientView.h */,
+				6AB2A7941E1B946000F01E9D /* YYAshapelGradientView.m */,
+			);
+			path = YYAshapel;
+			sourceTree = "<group>";
+		};
+		6AB2A7A21E1B94A200F01E9D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6AB2A7A31E1B94A200F01E9D /* BLEService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6AB2A7A31E1B94A200F01E9D /* BLEService */ = {
+			isa = PBXGroup;
+			children = (
+				6AB2A7A41E1B94A200F01E9D /* BLEService.h */,
+				6AB2A7A51E1B94A200F01E9D /* BLEService.m */,
+			);
+			path = BLEService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +464,7 @@
 				521E40CC1E09259400E2B00F /* LaunchScreen.storyboard in Resources */,
 				521E40C91E09259400E2B00F /* Assets.xcassets in Resources */,
 				521E40C71E09259400E2B00F /* Main.storyboard in Resources */,
+				6AB2A79E1E1B946000F01E9D /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,19 +489,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AB2A7981E1B946000F01E9D /* BabyOptions.m in Sources */,
 				521E41091E092DF900E2B00F /* EmergencyVC.m in Sources */,
+				6AB2A7971E1B946000F01E9D /* BabyCentralManager.m in Sources */,
 				521E40C11E09259400E2B00F /* AppDelegate.m in Sources */,
 				521E410C1E092E5000E2B00F /* PowerSwicth.m in Sources */,
 				521E410F1E092E7200E2B00F /* SleepTimeVC.m in Sources */,
+				6AB2A7951E1B946000F01E9D /* BabyBluetooth.m in Sources */,
 				521E41031E092CA300E2B00F /* BaseViewController.m in Sources */,
 				521E41121E092E9B00E2B00F /* FavoritesVC.m in Sources */,
+				6AB2A79D1E1B946000F01E9D /* SVIndefiniteAnimatedView.m in Sources */,
+				6AB2A79F1E1B946000F01E9D /* SVProgressHUD.m in Sources */,
 				30B863E21E0EB85B0099E7BC /* UIColor+YY.m in Sources */,
 				521E40FA1E0928B700E2B00F /* MainMenuVC.m in Sources */,
+				6AB2A79A1E1B946000F01E9D /* BabyRhythm.m in Sources */,
 				521E41061E092DA600E2B00F /* PickColorVC.m in Sources */,
-				30B0E6021E1033F300843316 /* YYAshapelGradientView.m in Sources */,
 				521E41001E092A0000E2B00F /* LavaLampVC.m in Sources */,
+				6AB2A7991E1B946000F01E9D /* BabyPeripheralManager.m in Sources */,
 				521E40BE1E09259400E2B00F /* main.m in Sources */,
+				6AB2A79C1E1B946000F01E9D /* BabyToy.m in Sources */,
+				6AB2A7A01E1B946000F01E9D /* SVRadialGradientLayer.m in Sources */,
 				521E40FF1E092A0000E2B00F /* LanternVC.m in Sources */,
+				6AB2A7A61E1B94A200F01E9D /* BLEService.m in Sources */,
+				6AB2A79B1E1B946000F01E9D /* BabySpeaker.m in Sources */,
+				6AB2A7A11E1B946000F01E9D /* YYAshapelGradientView.m in Sources */,
+				6AB2A7961E1B946000F01E9D /* BabyCallback.m in Sources */,
 				521E41151E092EC000E2B00F /* BLEConnectVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,6 +662,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SA6BGR8N24;
+				GCC_PREFIX_HEADER = /Volumes/Information/Study/Github/ENOEclipse/ENOEclipse/PrefixHeader.pch;
 				INFOPLIST_FILE = ENOEclipse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -548,6 +677,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SA6BGR8N24;
+				GCC_PREFIX_HEADER = /Volumes/Information/Study/Github/ENOEclipse/ENOEclipse/PrefixHeader.pch;
 				INFOPLIST_FILE = ENOEclipse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
