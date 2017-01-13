@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CommonDefined.h"
 #import "UIColor+YY.h"
+#import "BLEService.h"
 
 @interface BaseViewController : UIViewController {
     CGRect rectView;
