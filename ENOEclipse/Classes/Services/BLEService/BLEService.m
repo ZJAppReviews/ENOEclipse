@@ -47,140 +47,82 @@
 
 static BLEService *_instance = nil;
 
-//- (void)initFidedOrderValues {
-//     orderNames = @[@"停止测量",@"开始测量",@"读取时间",@"读取参数",@"读取记录",@"清除记录"];
-//     //公用的数据
-//     char b0[5];
-//     b0[0] = (0XAA);
-//     b0[1] = (0X55);
-//     b0[2] = (0XFF);
-//     b0[3] = (0X00);
-//     b0[4] = (0XCC);
-//     //停止测量:C0
-//     char b1[20] ;
-//     b1[0] = b0[0];
-//     b1[1] = b0[1];
-//     b1[2] = b0[2];
-//     b1[3] = (0XC0);
-//     b1[4]  = b0[3]; b1[5]  = b0[3]; b1[6]  = b0[3]; b1[7]  = b0[3]; b1[8] = b0[3];
-//     b1[9]  = b0[3]; b1[10] = b0[3]; b1[11] = b0[3]; b1[12] = b0[3]; b1[13] = b0[3];
-//     b1[14] = b0[3]; b1[15] = b0[3]; b1[16] = b0[3]; b1[17] = b0[3]; b1[18] = b0[3];
-//     b1[19] = b0[4];
-//     NSData *data1 = [[NSData alloc] initWithBytes:&b1 length:sizeof(b1)];
-//     //开始测量:C1
-//     char b2[20] ;
-//     b2[0] = b0[0];
-//     b2[1] = b0[1];
-//     b2[2] = b0[2];
-//     b2[3] = (0XC1);
-//     b2[4]  = b0[3]; b2[5]  = b0[3]; b2[6]  = b0[3]; b2[7]  = b0[3];  b2[8] = b0[3];
-//     b2[9]  = b0[3]; b2[10] = b0[3]; b2[11] = b0[3]; b2[12] = b0[3]; b2[13] = b0[3];
-//     b2[14] = b0[3]; b2[15] = b0[3]; b2[16] = b0[3]; b2[17] = b0[3]; b2[18] = b0[3];
-//     b2[19] = b0[4];
-//     NSData *data2 = [[NSData alloc] initWithBytes:&b2 length:sizeof(b2)];
-//     
-//     //读取时间:B1
-//     char b3[20] ;
-//     b3[0] = b0[0];
-//     b3[1] = b0[1];
-//     b3[2] = b0[2];
-//     b3[3] = (0XB1);
-//     b3[4]  = b0[3]; b3[5]  = b0[3]; b3[6]  = b0[3]; b3[7]  = b0[3];  b3[8] = b0[3];
-//     b3[9]  = b0[3]; b3[10] = b0[3]; b3[11] = b0[3]; b3[12] = b0[3]; b3[13] = b0[3];
-//     b3[14] = b0[3]; b3[15] = b0[3]; b3[16] = b0[3]; b3[17] = b0[3]; b3[18] = b0[3];
-//     b3[19] = b0[4];
-//     NSData *data3 = [[NSData alloc] initWithBytes:&b3 length:sizeof(b3)];
-//
-//     //读取参数:B3
-//     char b4[20] ;
-//     b4[0] = b0[0];
-//     b4[1] = b0[1];
-//     b4[2] = b0[2];
-//     b4[3] = (0XB3);
-//     b4[4]  = b0[3]; b4[5]  = b0[3]; b4[6]  = b0[3]; b4[7]  = b0[3];  b4[8] = b0[3];
-//     b4[9]  = b0[3]; b4[10] = b0[3]; b4[11] = b0[3]; b4[12] = b0[3]; b4[13] = b0[3];
-//     b4[14] = b0[3]; b4[15] = b0[3]; b4[16] = b0[3]; b4[17] = b0[3]; b4[18] = b0[3];
-//     b4[19] = b0[4];
-//     NSData *data4 = [[NSData alloc] initWithBytes:&b4 length:sizeof(b4)];
-//     
-//     //读取记录:B4
-//     char b5[20] ;
-//     b5[0] = b0[0];
-//     b5[1] = b0[1];
-//     b5[2] = b0[2];
-//     b5[3] = (0XB4);
-//     b5[4]  = b0[3]; b5[5]  = b0[3]; b5[6]  = b0[3]; b5[7]  = b0[3];  b5[8] = b0[3];
-//     b5[9]  = b0[3]; b5[10] = b0[3]; b5[11] = b0[3]; b5[12] = b0[3]; b5[13] = b0[3];
-//     b5[14] = b0[3]; b5[15] = b0[3]; b5[16] = b0[3]; b5[17] = b0[3]; b5[18] = b0[3];
-//     b5[19] = b0[4];
-//     NSData *data5 = [[NSData alloc] initWithBytes:&b5 length:sizeof(b5)];
-//     //清除记录:B5
-//     char b6[20] ;
-//     b6[0] = b0[0];
-//     b6[1] = b0[1];
-//     b6[2] = b0[2];
-//     b6[3] = (0XB5);
-//     b6[4]  = (0X60);
-//     b6[5]  = b0[3]; b6[6]  = b0[3]; b6[7]  = b0[3];  b6[8] = b0[3];
-//     b6[9]  = b0[3]; b6[10] = b0[3]; b6[11] = b0[3]; b6[12] = b0[3]; b6[13] = b0[3];
-//     b6[14] = b0[3]; b6[15] = b0[3]; b6[16] = b0[3]; b6[17] = b0[3]; b6[18] = b0[3];
-//     b6[19] = b0[4];
-//     NSData *data6 = [[NSData alloc] initWithBytes:&b6 length:sizeof(b6)];
-//     orderValues = [[NSMutableArray alloc] initWithObjects:data1, data2, data3, data4, data5, data6, nil];
-//}
-
+/*下发指令到设备,格式：AA55+长度+校验和+命令码+00*15
+ BLEOrderTypeOpen = -1,     //开灯--1
+ BLEOrderTypeClose = 0,     //关灯-0
+ BLEOrderTypeUrgency,       //紧急模式-5
+ BLEOrderTypeGetMCU,        //查询MCU状态-F
+ */
 - (void)initFidedOrderValues {
-    orderNames = @[@"停止测量",@"开始测量",@"读取时间",@"读取参数",@"读取记录",@"BLE版本",@"设备电量"];
-    orderSetNames = @[@"设置时间",@"设置参数",@"清除记录"];
+    orderNames = @[@"开灯",@"关灯",@"紧急模式",@"查询MCU状态"];
+    orderSetNames = @[@"开启白灯",@"固定模式",@"自定义模式",@"呼吸模式",@"睡眠模式"];
     //公用的数据
-    strHead = @"AA55FF";
-    NSString *strTail = @"000000000000000000000000000000CC";
+    strHead = @"AA55";
+    NSString *strTail = @"000000000000000000000000000000";//
     
-    //停止测量:C0
-    NSString *strOrder = [NSString stringWithFormat:@"%@C0%@",strHead,strTail];
+    //00
+    NSString *strOrder = [NSString stringWithFormat:@"%@00%@",strHead,strTail];
     NSData *data1 = [BabyToy convertHexStrToData:strOrder];
     
-    //开始测量:C1
-    strOrder = [NSString stringWithFormat:@"%@C1%@",strHead,strTail];
+    //05
+    strOrder = [NSString stringWithFormat:@"%@05%@",strHead,strTail];
     NSData *data2 = [BabyToy convertHexStrToData:strOrder];
     
-    //读取时间:B1
-    strOrder = [NSString stringWithFormat:@"%@B1%@",strHead,strTail];
+    //0F
+    strOrder = [NSString stringWithFormat:@"%@0F%@",strHead,strTail];
     NSData *data3 = [BabyToy convertHexStrToData:strOrder];
     
-    //读取参数:B3
-    strOrder = [NSString stringWithFormat:@"%@B3%@",strHead,strTail];
-    NSData *data4 = [BabyToy convertHexStrToData:strOrder];
-    
-    //读取记录:B4
-    strOrder = [NSString stringWithFormat:@"%@B4%@",strHead,strTail];
-    NSData *data5 = [BabyToy convertHexStrToData:strOrder];
-    
-    //BLE版本:B6
-    strOrder = [NSString stringWithFormat:@"%@B6%@",strHead,strTail];
-    NSData *data6 = [BabyToy convertHexStrToData:strOrder];
-    
-    //设备电量:C2
-    strOrder = [NSString stringWithFormat:@"%@C2%@",strHead,strTail];
-    NSData *data7 = [BabyToy convertHexStrToData:strOrder];
-
-    
-    orderValues = [[NSMutableArray alloc] initWithObjects:data1, data2, data3, data4, data5, data6, data7, nil];
+    orderValues = [[NSMutableArray alloc] initWithObjects:data1, data2, data3, nil];
 }
 
-//0-设置时间:B0。1-设置参数:B2
+/*设置参数
+ BLEOrderTypeLight = 0,  //开启白灯-1
+ BLEOrderTypeFixed,      //固定模式-2
+ BLEOrderTypeSleep,      //睡眠模式-6
+ */
 - (NSData *)getBLEOrderType:(BLEOrderTypeSet)type value:(NSString *)string{
     NSString *strOrder;
-    switch (type) {//设置时间 B0
+    switch (type) {
+        case 0: {//01,格式：AA55+07+校验和+命令码+亮度+速度+00*13
+            strOrder = [NSString stringWithFormat:@"%@07XX01%@0000000000-0000000000-000000",strHead,string];
+        }
+            break;
+        case 1: {//02,格式：AA55+06+校验和+命令码+模式+00*14
+            strOrder = [NSString stringWithFormat:@"%@06XX02%@0000000000-0000000000-00000000",strHead,string];
+        }
+            break;
+        case 2: {//03,格式：AA55+06+校验和+命令码+时间+00*14
+            strOrder = [NSString stringWithFormat:@"%@B5%@0000000000000000000000000000CC",strHead,string];
+        }
+            break;
+        default:
+            break;
+    }
+    NSData *data = [BabyToy convertHexStrToData:strOrder];
+    return data;
+}
+
+/*设置参数分包
+ BLEOrderTypeCustom       //自定义模式-3
+ 第一包：03,格式：AA55+20+校验和+03+07+【00-255】*14
+ 第二包：03,格式：AA55+11+校验和+03+08+【00-255】*4+速度+00*9
+ 
+ BLEOrderTypeBreathe,     //呼吸模式-4
+ 第一包：04,格式：AA55+20+校验和+04+07+【00-255】*14
+ 第二包：04,格式：AA55+12+校验和+04+08+【00-255】*4+亮度+速度+00*8
+ */
+- (NSData *)getBLEOrderPageType:(BLEOrderTypeSet)type value:(NSString *)string{
+    NSString *strOrder;
+    switch (type) {//01
         case 0: {
             strOrder = [NSString stringWithFormat:@"%@B0%@0000000000000000CC",strHead,string];
         }
             break;
-        case 1: {//设置参数 B2
+        case 1: {//02
             strOrder = [NSString stringWithFormat:@"%@B2%@CC",strHead,string];//230805     082305     FFFFFF 201601012359
         }
             break;
-        case 2: {//清除记录:B5
+        case 2: {//03
             strOrder = [NSString stringWithFormat:@"%@B5%@0000000000000000000000000000CC",strHead,string];
         }
             break;
@@ -472,8 +414,6 @@ static BLEService *_instance = nil;
     }];
 }
 
-
-
 //订阅一个值，监听通知通道
 - (void)setNotifiy {
     [_babyBluetooth notify:currPeripheral
@@ -497,7 +437,7 @@ static BLEService *_instance = nil;
     [currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
 }
 
-//设置时间和参数
+//设置参数
 - (void)setBLEWithType:(BLEOrderTypeSet)orderType value:(NSString *)string{
     NSData *data = [self getBLEOrderType:orderType value:string];
     if (data) {
@@ -508,6 +448,19 @@ static BLEService *_instance = nil;
     }
     [currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
 }
+
+//设置参数分包
+- (void)setBLEPageWithType:(BLEOrderTypeSet)orderType value:(NSString *)string {
+    NSData *data = [self getBLEOrderPageType:orderType value:string];
+    if (data) {
+        NSString *str = [NSString stringWithFormat:@"下发指令-%@:%@", orderSetNames[orderType],[BabyToy convertDataToHexStr:data]];
+        if (self.startBlock) {
+            self.startBlock(str);
+        }
+    }
+    [currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
+}
+
 
 - (void)dealReadData:(NSData *)readData {
     DLog(@"读取的值:%@",readData);

@@ -7,6 +7,7 @@
 //
 
 #import "MainMenuVC.h"
+#import "BLEService.h"
 
 #import "LanternVC.h"
 #import "LavaLampVC.h"

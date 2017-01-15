@@ -662,7 +662,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SA6BGR8N24;
-				GCC_PREFIX_HEADER = /Volumes/Information/Study/Github/ENOEclipse/ENOEclipse/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ENOEclipse/PrefixHeader.pch";
 				INFOPLIST_FILE = ENOEclipse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -677,7 +677,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SA6BGR8N24;
-				GCC_PREFIX_HEADER = /Volumes/Information/Study/Github/ENOEclipse/ENOEclipse/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ENOEclipse/PrefixHeader.pch";
 				INFOPLIST_FILE = ENOEclipse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
