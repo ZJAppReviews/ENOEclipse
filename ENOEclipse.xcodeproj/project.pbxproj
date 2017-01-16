@@ -39,6 +39,7 @@
 		6AB2A7A01E1B946000F01E9D /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7911E1B946000F01E9D /* SVRadialGradientLayer.m */; };
 		6AB2A7A11E1B946000F01E9D /* YYAshapelGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7941E1B946000F01E9D /* YYAshapelGradientView.m */; };
 		6AB2A7A61E1B94A200F01E9D /* BLEService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7A51E1B94A200F01E9D /* BLEService.m */; };
+		9F7DA1671E2CFC1000C88CDA /* YYCircleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7DA1661E2CFC1000C88CDA /* YYCircleSlider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,8 @@
 		6AB2A7A41E1B94A200F01E9D /* BLEService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEService.h; sourceTree = "<group>"; };
 		6AB2A7A51E1B94A200F01E9D /* BLEService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEService.m; sourceTree = "<group>"; };
 		6AB2A7A71E1B961300F01E9D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		9F7DA1651E2CFC1000C88CDA /* YYCircleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCircleSlider.h; sourceTree = "<group>"; };
+		9F7DA1661E2CFC1000C88CDA /* YYCircleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCircleSlider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +334,8 @@
 			children = (
 				6AB2A7931E1B946000F01E9D /* YYAshapelGradientView.h */,
 				6AB2A7941E1B946000F01E9D /* YYAshapelGradientView.m */,
+				9F7DA1651E2CFC1000C88CDA /* YYCircleSlider.h */,
+				9F7DA1661E2CFC1000C88CDA /* YYCircleSlider.m */,
 			);
 			path = YYAshapel;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				6AB2A7971E1B946000F01E9D /* BabyCentralManager.m in Sources */,
 				521E40C11E09259400E2B00F /* AppDelegate.m in Sources */,
 				521E410C1E092E5000E2B00F /* PowerSwicth.m in Sources */,
+				9F7DA1671E2CFC1000C88CDA /* YYCircleSlider.m in Sources */,
 				521E410F1E092E7200E2B00F /* SleepTimeVC.m in Sources */,
 				6AB2A7951E1B946000F01E9D /* BabyBluetooth.m in Sources */,
 				521E41031E092CA300E2B00F /* BaseViewController.m in Sources */,

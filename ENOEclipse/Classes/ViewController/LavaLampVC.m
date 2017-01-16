@@ -169,4 +169,11 @@
     colorView.hidden = NO;
 }
 
+- (void)sliderChangeSpeed:(UISlider *)sender {
+    CGFloat value = sender.value;
+    NSLog(@"%f", value);
+    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+}
+
+
 @end

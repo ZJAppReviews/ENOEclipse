@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EFB0E77D17E2CCA52B92EC5035779679E332B470",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "EFB0E77D17E2CCA52B92EC5035779679E332B470" : 9223372036854775807,
+    "9169C3CC5117A77072ADAF6ED275E907D155A121" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7D0E5F57-6F0F-4EFB-926A-EE5461399D72",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "EFB0E77D17E2CCA52B92EC5035779679E332B470" : "ENOEclipse\/",
+    "9169C3CC5117A77072ADAF6ED275E907D155A121" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ENOEclipse",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ENOEclipse.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yynest\/Test.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9169C3CC5117A77072ADAF6ED275E907D155A121"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yynest\/ENOEclipse.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EFB0E77D17E2CCA52B92EC5035779679E332B470"
+    }
+  ]
+}

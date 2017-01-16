@@ -8,8 +8,11 @@
 
 #import "SleepTimeVC.h"
 #import "YYAshapelGradientView.h"
+#import "YYCircleSlider.h"
 
-@interface SleepTimeVC ()
+@interface SleepTimeVC () {
+    UILabel *lb_time;
+}
 
 @end
 
@@ -26,10 +29,19 @@
     
     
     //进度条
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, widthView*0.85, widthView*0.85)];
-    imgView.image = [UIImage imageNamed:@"time_circle"];
-    imgView.center = CGPointMake(widthView/2, heightView*0.45);
-    [self.view addSubview:imgView];
+//    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, widthView*0.85, widthView*0.85)];
+//    imgView.image = [UIImage imageNamed:@"time_circle"];
+//    imgView.center = CGPointMake(widthView/2, heightView*0.45);
+//    [self.view addSubview:imgView];
+    
+    YYCircleSlider *slider = [[YYCircleSlider alloc] initWithFrame:CGRectMake(0, 0, widthView*0.85, widthView*0.85)];
+    slider.center = CGPointMake(widthView/2, heightView*0.48);
+    slider.lineWidth = 20;
+    
+    [slider addTarget:self action:@selector(newValue:) forControlEvents:UIControlEventValueChanged];
+    
+    [slider changeAngle:0];
+    [self.view addSubview:slider];
     
     //按钮
     UIButton *bt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, widthView*0.3, widthView*0.14)];
@@ -46,11 +58,12 @@
     [self.view addSubview:bt];
     
     //时间
-    UILabel *lb_time = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, widthView/2, 75)];
+    lb_time = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, widthView/2, 75)];
     lb_time.center = CGPointMake(widthView/2, heightView*0.4);
     lb_time.textColor = [UIColor colorMainLight];
     lb_time.font = [UIFont systemFontOfSize:100];
-    lb_time.text = @"29";
+    lb_time.text = @"0";
+    lb_time.adjustsFontSizeToFitWidth = YES;
     lb_time.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:lb_time];
     
@@ -63,10 +76,16 @@
     [self.view addSubview:lb_unit];
     
     //游标
-    UIButton *bt_pick = [[UIButton alloc] initWithFrame:CGRectMake(widthView*0.05, widthView*0.5, widthView*0.09, widthView*0.09)];
-    [bt_pick setBackgroundImage:[UIImage imageNamed:@"time_circle_selected"] forState:UIControlStateNormal];
-    [bt_pick addTarget:self action:@selector(clickedPickButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:bt_pick];
+//    UIButton *bt_pick = [[UIButton alloc] initWithFrame:CGRectMake(widthView*0.05, widthView*0.5, widthView*0.09, widthView*0.09)];
+//    [bt_pick setBackgroundImage:[UIImage imageNamed:@"time_circle_selected"] forState:UIControlStateNormal];
+//    [bt_pick addTarget:self action:@selector(clickedPickButton:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:bt_pick];
+}
+
+- (void)newValue:(YYCircleSlider*)slider{
+        NSLog(@"newValue:%d",slider.angle);
+    NSInteger value = ceil(abs(slider.angle)/280.0*120);
+    lb_time.text = [NSString stringWithFormat:@"%ld",value];
 }
 
 - (void)didReceiveMemoryWarning {
