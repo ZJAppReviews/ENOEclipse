@@ -114,6 +114,7 @@
 
 - (void)clickedButton:(UIButton *)sender {
     sender.selected = !sender.selected;
+    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
 //    if (sender.selected) {
 //        [sender setTitle:@"DISCONNECT" forState:UIControlStateSelected];
 //    }

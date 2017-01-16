@@ -75,7 +75,7 @@
 }
 
 - (void)clickedButton:(UIButton *)sender {
-    
+    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
 }
 
 - (void)clickedPickButton:(UIButton *)sender {

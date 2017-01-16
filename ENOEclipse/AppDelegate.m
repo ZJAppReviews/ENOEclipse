@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SVProgressHUD.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +15,27 @@
 
 @implementation AppDelegate
 
+- (void)InitSVProgressHudForQianShan
+{
+    //设置弱提醒背景色，字体色
+    [SVProgressHUD setBackgroundColor:[UIColor lightGrayColor]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    
+    //设置提醒的提示图片
+    [SVProgressHUD setInfoImage:nil];
+    //提醒文字
+    //[SVProgressHUD showInfoWithStatus:@"收藏成功"];
+    //设置可否操作
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setMinimumDismissTimeInterval:1.5];
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    
+    [self InitSVProgressHudForQianShan];
     return YES;
 }
 

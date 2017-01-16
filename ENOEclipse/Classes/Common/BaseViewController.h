@@ -10,6 +10,7 @@
 #import "CommonDefined.h"
 #import "UIColor+YY.h"
 #import "BLEService.h"
+#import "SVProgressHUD.h"
 
 @interface BaseViewController : UIViewController {
     CGRect rectView;

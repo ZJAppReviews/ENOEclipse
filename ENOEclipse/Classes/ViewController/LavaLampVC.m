@@ -68,6 +68,9 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"To Build your own Lava Lamp,simply tap on each of the 6 LED's to rotate and select your favorite colors.You can adjust your preferred speed blew." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [alertView show];
     }
+    else {
+        [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+    }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

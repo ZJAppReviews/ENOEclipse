@@ -36,6 +36,8 @@ typedef NS_ENUM(NSUInteger, BLEOrderTypeSetPage) {
 
 @property(nonatomic,assign)int errorCode;
 
+@property(nonatomic,assign)BOOL isConnected;
+
 //开始扫描
 - (void)startScanConnectBLE;
 - (void)startScanBLETime:(NSInteger)time successBlock:(void (^)(CBPeripheral *peripheral, NSString *strMac))successBlock failBlock:(void (^)())failBlock;

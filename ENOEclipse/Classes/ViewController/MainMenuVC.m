@@ -155,7 +155,11 @@
 }
 
 -(void)showVc:(NSInteger)index {
-    if (index == 10004) {
+    if (index == 10003) {
+        [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+    }
+    else if (index == 10004) {
+        [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
         return;
     }
     //切换按钮的高亮状态

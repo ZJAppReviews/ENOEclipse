@@ -60,8 +60,13 @@
     
     int index = (int)value;
     imgCircle.image = [UIImage imageNamed:[NSString stringWithFormat: @"circle%d",index]];
+    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
 }
 
-
+- (void)sliderChangeSpeed:(UISlider *)sender {
+    CGFloat value = sender.value;
+    NSLog(@"%f", value);
+    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+}
 
 @end
