@@ -60,7 +60,7 @@
     
     int index = (int)value;
     imgCircle.image = [UIImage imageNamed:[NSString stringWithFormat: @"circle%d",index]];
-    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+    [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeLight value:@"01"];
 }
 
 - (void)sliderChangeSpeed:(UISlider *)sender {

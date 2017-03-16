@@ -363,8 +363,9 @@
 }
 
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-//    DLog(@">>>didWriteValueForCharacteristic");
-//    DLog(@">>>uuid:%@,new value:%@",characteristic.UUID,characteristic.value);
+    DLog(@">>>characteristic uuid:%@,new value:%@,properties:%lu",characteristic.UUID,characteristic.value,(unsigned long)characteristic.properties);
+    DLog(@">>>didWriteValueForCharacteristic,%@",error);
+    
     if ([currChannel blockOnDidWriteValueForCharacteristic]) {
         [currChannel blockOnDidWriteValueForCharacteristic](characteristic,error);
     }

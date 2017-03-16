@@ -1,4 +1,4 @@
-//
+ //
 //  BLEService.m
 //  QianShanJY
 //
@@ -61,7 +61,7 @@ static BLEService *_instance = nil;
     NSString *strTail = @"000000000000000000000000000000";//
     
     //00
-    NSString *strOrder = [NSString stringWithFormat:@"%@00%@",strHead,strTail];
+    NSString *strOrder = [NSString stringWithFormat:@"%@050500%@",strHead,strTail];
     NSData *data1 = [BabyToy convertHexStrToData:strOrder];
     
     //05
@@ -84,7 +84,8 @@ static BLEService *_instance = nil;
     NSString *strOrder;
     switch (type) {
         case 0: {//01,格式：AA55+07+校验和+命令码+亮度+速度+00*13
-            strOrder = [NSString stringWithFormat:@"%@07XX01%@0000000000-0000000000-000000",strHead,string];
+//            strOrder = [NSString stringWithFormat:@"%@07XX01%@0000000000-0000000000-000000",strHead,string];
+            strOrder = [NSString stringWithFormat:@"%@070901010000000000000000000000000000",strHead];
         }
             break;
         case 1: {//02,格式：AA55+06+校验和+命令码+模式+00*14
@@ -98,6 +99,7 @@ static BLEService *_instance = nil;
         default:
             break;
     }
+    DLog(@"strOrder:%@",strOrder);
     NSData *data = [BabyToy convertHexStrToData:strOrder];
     return data;
 }
@@ -348,16 +350,16 @@ static BLEService *_instance = nil;
         
         NSString *strUUID = service.UUID.UUIDString;
         DLog(@"===service name:%@:%@",service.UUID,strUUID);
-        if ([strUUID isEqualToString:@"FFF0"]) {
+        if ([strUUID isEqualToString:@"FFE0"]) {
             for (int row=0;row<service.characteristics.count;row++) {
                 CBCharacteristic *c = service.characteristics[row];
                 NSString *strCUUID = c.UUID.UUIDString;
                 DLog(@"===Characteristic name:%@:%@",c.UUID,strCUUID);
-                if ([strCUUID isEqualToString:@"FFF2"]) {
+                if ([strCUUID isEqualToString:@"FFE2"]) {
                     notifiyCharacteristic = c;
                     [weakSelf setNotifiy];
                 }
-                else if ([strCUUID isEqualToString:@"FFF3"]) {
+                else if ([strCUUID isEqualToString:@"FFE1"]) {
                     writeCharacteristic = c;
                 }
                 if (notifiyCharacteristic && writeCharacteristic) {
@@ -412,6 +414,9 @@ static BLEService *_instance = nil;
         DLog(@"setBlockOnDidWriteValueForCharacteristicAtChannel characteristic:%@ and new value:%@",characteristic.UUID, characteristic.value);
     }];
     
+    [_babyBluetooth setBlockOnDidWriteValueForDescriptor:^(CBDescriptor *descriptor,NSError *error){
+        
+    }];
     //设置通知状态改变的block
     [_babyBluetooth setBlockOnDidUpdateNotificationStateForCharacteristicAtChannel:channelOnCharacteristicView block:^(CBCharacteristic *characteristic, NSError *error) {
         DLog(@"uid:%@,isNotifying:%@",characteristic.UUID,characteristic.isNotifying?@"on":@"off");
@@ -438,7 +443,7 @@ static BLEService *_instance = nil;
             self.startBlock(str);
         }
     }
-    [currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    [currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithoutResponse];
 }
 
 //设置参数
@@ -450,7 +455,7 @@ static BLEService *_instance = nil;
             self.startBlock(str);
         }
     }
-    [currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    [currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithoutResponse];
 }
 
 //设置参数分包
