@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511360667.781792"
+            timestampString = "511379151.5632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
             landmarkName = "-babyDelegate"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511361688.248058"
+            timestampString = "511379151.5632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "-babyDelegate"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,28 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511362738.817973"
+            timestampString = "511379151.5632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "470"
-            endingLineNumber = "470"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
             landmarkName = "-setBLEPageWithType:value:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511362799.514689"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "458"
-            endingLineNumber = "458"
-            landmarkName = "-setBLEWithType:value:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511373150.652937"
+            timestampString = "511379151.5632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
             landmarkName = "-writeOrderWithType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -217,13 +201,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/ViewController/MainMenuVC.m"
-            timestampString = "511373399.06817"
+            filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
+            timestampString = "511379151.5632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-showVc:"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-getBLEOrderType:value:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

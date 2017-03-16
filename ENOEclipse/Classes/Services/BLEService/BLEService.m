@@ -75,6 +75,24 @@ static BLEService *_instance = nil;
     orderValues = [[NSMutableArray alloc] initWithObjects:data1, data2, data3, nil];
 }
 
+//得到验证码,http://www.cnblogs.com/Jeamine/p/5210890.html
+- (NSString *)getCodeWithLength:(NSString *)strLength data:(NSString *)strData {
+
+    NSData *tempData = [BabyToy convertHexStrToData:strData];
+    int length = (int)tempData.length;
+    Byte *bytes = (unsigned char *)[tempData bytes];
+    Byte sum = 0;
+    for (int i = 0; i<length; i++) {
+        sum += bytes[i];
+    }
+    int sumT = sum+[BabyToy convertHexStrToInt:strLength];
+    int at = sumT%256;
+    NSData *data = [BabyToy ConvertIntToData:at];
+    NSString *code = [BabyToy convertDataToHexStr:data];
+    
+    return [code substringToIndex:2];
+}
+
 /*设置参数
  BLEOrderTypeLight = 0,  //开启白灯-1
  BLEOrderTypeFixed,      //固定模式-2
@@ -85,7 +103,11 @@ static BLEService *_instance = nil;
     switch (type) {
         case 0: {//01,格式：AA55+07+校验和+命令码+亮度+速度+00*13
 //            strOrder = [NSString stringWithFormat:@"%@07XX01%@0000000000-0000000000-000000",strHead,string];
-            strOrder = [NSString stringWithFormat:@"%@070901010000000000000000000000000000",strHead];
+            NSString *strL = @"07";
+            NSString *code = [self getCodeWithLength:strL data:string];
+            NSString *code1 = [self getCodeWithLength:@"05" data:@"0000"];
+            NSString *code2 = [self getCodeWithLength:@"14" data:@"0307feb3683f7e6051f2f051462f4f00"];
+            strOrder = [NSString stringWithFormat:@"%@%@%@%@0000000000000000000000000000",strHead,strL,code,string];
         }
             break;
         case 1: {//02,格式：AA55+06+校验和+命令码+模式+00*14
