@@ -47,7 +47,9 @@ typedef NS_ENUM(NSUInteger, BLEOrderTypeSetPage) {
 //停止扫描
 - (void)pauseScanBLE;
 //断开所有连接
-- (void)cancelBLEConnection;
+- (void)cancelAllBLEConnection;
+//断开连接
+-(void)cancelBLEConnection:(CBPeripheral *)peripheral;
 
 /*下发指令到设备
  BLEOrderTypeOpen = -1,     //开灯--1

@@ -9,18 +9,31 @@
 #import "BLEConnectVC.h"
 
 @interface BLEConnectVC ()<UITableViewDelegate,UITableViewDataSource> {
-    NSArray *bleList;
+    UITableView *baseTableView;
+    NSMutableArray *bleList;
 }
 
 @end
 
 @implementation BLEConnectVC
 
+- (void)scanBloodPressure {
+    [[BLEService sharedInstance] startScanBLETime:20.0 successBlock:^(CBPeripheral *peripheral, NSString *strMac) {
+        if (![bleList containsObject:peripheral]) {
+            [bleList addObject:peripheral];
+            [baseTableView reloadData];
+        }
+    }failBlock:^(){
+        [SVProgressHUD showInfoWithStatus:@"Scan ENOEclipse Fail"];
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    bleList = @[@"ENO Eclipse #1",@"ENO Eclipse #2",@"ENO Eclipse #3"];
+    bleList = [[NSMutableArray alloc] init];
+    [self scanBloodPressure];
     
-    UITableView *baseTableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+    baseTableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     baseTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     baseTableView.backgroundColor = [UIColor whiteColor];
     baseTableView.delegate = self;
@@ -52,13 +65,19 @@
     }
     
     NSInteger row = indexPath.row;
-    cell.textLabel.text = bleList[row];
+    CBPeripheral *peripheral = bleList[row];
+    NSString *name = peripheral.name;
+    if (!name) {
+        name = @"NO Name";
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",name];
     cell.textLabel.textColor = [UIColor colorMainLight];
     cell.textLabel.font = [UIFont systemFontOfSize:26];
     
     //按钮
     CGRect rect = CGRectMake(widthView-140-VIEW_MARGIN, 20, 140, 60);
     UIButton *bt = [[UIButton alloc] initWithFrame:rect];
+    bt.tag = row;
     bt.layer.borderWidth = 0.5;
     bt.layer.borderColor = [UIColor colorMainLight].CGColor;
     bt.layer.cornerRadius = 30;
@@ -89,12 +108,26 @@
 
 
 - (void)clickedButton:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    if (sender.selected) {
-        [sender setTitle:@"DISCONNECT" forState:UIControlStateSelected];
+    CBPeripheral *selPer = [bleList objectAtIndex:sender.tag];
+    if (!sender.selected) {
+        [[BLEService sharedInstance] connectPeripheral:selPer successBlock:^() {
+            if (!sender.selected) {
+                sender.selected = YES;
+                [sender setTitle:@"DISCONNECT" forState:UIControlStateSelected];
+            }
+        } failBlock:^() {
+            [SVProgressHUD showInfoWithStatus:@"Connect ENOEclipse Fail"];
+        } startOrderBlock:^() {
+            //初始化完成，加载指令
+            
+            //测量过程
+            //[self dealBLEData];
+        }];
     }
     else {
+        sender.selected = NO;
         [sender setTitle:@"CONNECT" forState:UIControlStateNormal];
+        [[BLEService sharedInstance] cancelBLEConnection:selPer];
     }
 }
 

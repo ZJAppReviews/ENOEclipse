@@ -190,8 +190,13 @@ static BLEService *_instance = nil;
 }
 
 //断开所有连接
-- (void)cancelBLEConnection {
+- (void)cancelAllBLEConnection {
     [_babyBluetooth cancelAllPeripheralsConnection];
+}
+
+//断开连接
+-(void)cancelBLEConnection:(CBPeripheral *)peripheral{
+    [_babyBluetooth cancelPeripheralConnection:peripheral];
 }
 
 //连接ble
@@ -204,7 +209,6 @@ static BLEService *_instance = nil;
 }
 
 - (void)connectPeripheral {
-    [SVProgressHUD showInfoWithStatus:@"开始连接血压仪"];
     _babyBluetooth.having(currPeripheral).and.channel(channelOnPeropheralView).then.connectToPeripherals().discoverServices().discoverCharacteristics().readValueForCharacteristic().discoverDescriptorsForCharacteristic().readValueForDescriptors().begin();
 }
 
@@ -229,7 +233,7 @@ static BLEService *_instance = nil;
     //设置扫描到设备的委托
     [_babyBluetooth setBlockOnDiscoverToPeripherals:^(CBCentralManager *central, CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI) {
         NSString *uuidStr = peripheral.identifier.UUIDString;
-        DLog(@"搜索到了设备:%@:%@，信号强度：%@",peripheral.name,uuidStr,advertisementData);
+//        DLog(@"搜索到了设备:%@:%@，信号强度：%@",peripheral.name,uuidStr,advertisementData);
         if (weakSelf.scanSuccessBlock) {
             weakSelf.scanSuccessBlock(peripheral,[advertisementData objectForKey:@"kCBAdvDataManufacturerData"]);
         }
@@ -266,14 +270,15 @@ static BLEService *_instance = nil;
     
     //设置查找设备的过滤器
     [_babyBluetooth setFilterOnDiscoverPeripherals:^BOOL(NSString *peripheralName) {
-        DLog(@"name:%@",peripheralName);
+        return YES;
+//        DLog(@"name:%@",peripheralName);
         //设置查找规则是名称大于1 ， the search rule is peripheral.name length > 2
-        if ([peripheralName isEqualToString:@"QianShan01"]) {// || [peripheralName isEqualToString:@"BleSeriaPort"] || [peripheralName isEqualToString:@"TianjuSmart     "]
-            return YES;
-        }
-        else{
-            return NO;
-        }
+//        if ([peripheralName isEqualToString:@"QianShan01"]) {// || [peripheralName isEqualToString:@"BleSeriaPort"] || [peripheralName isEqualToString:@"TianjuSmart     "]
+//            return YES;
+//        }
+//        else{
+//            return NO;
+//        }
     }];
     
     
@@ -356,7 +361,6 @@ static BLEService *_instance = nil;
                     writeCharacteristic = c;
                 }
                 if (notifiyCharacteristic && writeCharacteristic) {
-                    [SVProgressHUD showInfoWithStatus:@"可以开始测量血压"];
                     if (weakSelf.startOrderBlock) {
                         weakSelf.startOrderBlock();
                     }
