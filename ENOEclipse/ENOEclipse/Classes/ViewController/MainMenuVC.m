@@ -156,11 +156,15 @@
 
 -(void)showVc:(NSInteger)index {
     if (index == 10003) {
-        [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+        if ([self isCennectedLight]) {
+            //发出指令
+            [[BLEService sharedInstance] writeOrderWithType:BLEOrderTypeUrgency];
+        }
     }
     else if (index == 10004) {
-        [[BLEService sharedInstance] writeOrderWithType:BLEOrderTypeClose];
-//        [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+        if ([self isCennectedLight]) {
+            [[BLEService sharedInstance] writeOrderWithType:BLEOrderTypeClose];
+        }
         return;
     }
     //切换按钮的高亮状态
@@ -179,6 +183,11 @@
         [midView addSubview:view];
     }
     frontView = view;
+    if (index == 10006) {
+        if ([self isCennectedLight]) {
+            [[BLEService sharedInstance] writeOrderWithType:BLEOrderTypeGetMCU];
+        }
+    }
 }
 
 

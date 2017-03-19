@@ -11,6 +11,9 @@
 @interface LavaLampVC ()<UIAlertViewDelegate> {
     UIView *setView;
     NSArray *colorList;
+    NSArray *colorValues;
+    NSMutableDictionary *inputColors;
+    
     UIView *colorView;
     
     UIButton *currButton;
@@ -22,8 +25,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    inputColors = [[NSMutableDictionary alloc] init];
     //#ED1D24   #9E1F63  #1C75BC  #00A79E   #00A651  #FFF200  #000000
     colorList = @[[UIColor colorWithHex:0xED1D24],[UIColor colorWithHex:0x9E1F63],[UIColor colorWithHex:0x1C75BC],[UIColor colorWithHex:0x00A79E],[UIColor colorWithHex:0x00A651],[UIColor colorWithHex:0xFFF200],[UIColor colorWithHex:0x000000]];
+    colorValues = @[@"ED1D24",@"9E1F63",@"1C75BC",@"00A79E",@"00A651",@"FFF200",@"000000"];
     
     //功能按钮
     NSInteger w = (widthView-4*VIEW_MARGIN)/2;
@@ -49,7 +54,7 @@
         bt.titleLabel.numberOfLines = 2;
         bt.titleLabel.textAlignment = NSTextAlignmentCenter;
         [bt addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
-        bt.tag = i+10000;
+        bt.tag = i+1;
         [view addSubview:bt];
     }
     
@@ -63,13 +68,16 @@
 }
 
 - (void)clickedButton:(UIButton *)sender {
-    NSInteger tag = sender.tag;
-    if (tag == 10003) {
+    int tag = (int)sender.tag;
+    if (tag == 4) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"To Build your own Lava Lamp,simply tap on each of the 6 LED's to rotate and select your favorite colors.You can adjust your preferred speed blew." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [alertView show];
     }
     else {
-        [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+        if ([self isCennectedLight]) {
+            //发出指令
+            [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeFixed value:[NSString stringWithFormat:@"020%d",tag]];
+        }
     }
 }
 
@@ -141,7 +149,7 @@
             bt.layer.borderColor = [UIColor colorMainLight].CGColor;
             bt.layer.cornerRadius = w/2;
             [bt addTarget:self action:@selector(clickedSetButton:) forControlEvents:UIControlEventTouchUpInside];
-            bt.tag = i+10000;
+            bt.tag = i;
             [setView addSubview:bt];
         }
         //中间大圆
@@ -159,8 +167,29 @@
 
 - (void)clickedColorButton:(UIButton *)sender {
     if (currButton) {
-        currButton.backgroundColor = colorList[sender.tag];
+        int tag = (int)sender.tag;
+        currButton.backgroundColor = colorList[tag];
         colorView.hidden = YES;
+        
+        NSString *value = colorValues[tag];
+        [inputColors setObject:value forKey:[NSString stringWithFormat:@"%d",(int)currButton.tag]];
+        
+        if (inputColors.count==6) {
+            if ([self isCennectedLight]) {
+                
+            }
+            
+            NSString *strResult = [[NSString alloc] init];
+            for (int i=0; i<6; i++) {
+                strResult = [strResult stringByAppendingString:[inputColors objectForKey:[NSString stringWithFormat:@"%d",i]]];
+            }
+            //发出指令
+            NSString *str1 = [NSString stringWithFormat:@"0307%@",[strResult substringToIndex:28]];
+            [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeCustom value:str1 pageNum:1];
+            
+            NSString *str2 = [NSString stringWithFormat:@"03080%d%@",speedValue,[strResult substringFromIndex:28]];
+            [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeCustom value:str2 pageNum:2];
+        }
     }
 }
 
@@ -169,11 +198,6 @@
     colorView.hidden = NO;
 }
 
-- (void)sliderChangeSpeed:(UISlider *)sender {
-    CGFloat value = sender.value;
-    NSLog(@"%f", value);
-    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
-}
 
 
 @end

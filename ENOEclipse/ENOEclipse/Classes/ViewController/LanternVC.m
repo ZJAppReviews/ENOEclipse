@@ -10,6 +10,7 @@
 
 @interface LanternVC () {
     UIImageView *imgCircle;
+    
 }
 
 @end
@@ -55,18 +56,21 @@
 
 
 - (void)sliderChangeLantern:(UISlider *)sender {
-    CGFloat value = sender.value*10;
-    NSLog(@"%f", value);
-    
-    int index = (int)value;
-    imgCircle.image = [UIImage imageNamed:[NSString stringWithFormat: @"circle%d",index]];
-    [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeLight value:@"0101"];
+    [super sliderChangeLantern:sender];
+    if ([self isCennectedLight]) {
+        
+        imgCircle.image = [UIImage imageNamed:[NSString stringWithFormat: @"circle%d",lightValue]];
+        //发出指令
+        [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeLight value:[NSString stringWithFormat:@"010%d0%d",lightValue,speedValue]];
+    }
 }
 
 - (void)sliderChangeSpeed:(UISlider *)sender {
-    CGFloat value = sender.value;
-    NSLog(@"%f", value);
-    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+    [super sliderChangeSpeed:sender];
+    if ([self isCennectedLight]) {
+        //发出指令
+        [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeLight value:[NSString stringWithFormat:@"010%d0%d",lightValue,speedValue]];
+    }
 }
 
 @end

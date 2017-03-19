@@ -12,6 +12,7 @@
 
 @interface SleepTimeVC () {
     UILabel *lb_time;
+    int minute;
 }
 
 @end
@@ -83,9 +84,8 @@
 }
 
 - (void)newValue:(YYCircleSlider*)slider{
-        NSLog(@"newValue:%d",slider.angle);
-    NSInteger value = ceil(abs(slider.angle)/280.0*120);
-    lb_time.text = [NSString stringWithFormat:@"%ld",value];
+    minute = ceil(abs(slider.angle)/280.0*120);
+    lb_time.text = [NSString stringWithFormat:@"%d",minute];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,7 +94,14 @@
 }
 
 - (void)clickedButton:(UIButton *)sender {
-    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+    if ([self isCennectedLight]) {
+        //发出指令
+        NSString *hex = [[NSString alloc] initWithFormat:@"%x",minute];
+        if (hex.length==1) {
+            hex = [NSString stringWithFormat:@"0%@",hex];
+        }
+        [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeSleep value:[NSString stringWithFormat:@"06%@",hex]];
+    }
 }
 
 - (void)clickedPickButton:(UIButton *)sender {

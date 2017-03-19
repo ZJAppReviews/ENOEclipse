@@ -16,6 +16,9 @@
     CGRect rectView;
     int widthView;
     int heightView;
+    
+    int lightValue;
+    int speedValue;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame;
@@ -26,5 +29,11 @@
 
 //速度
 - (void)addSpeedSlider;
+
+//判断连接状态
+- (BOOL)isCennectedLight;
+
+- (void)sliderChangeLantern:(UISlider *)sender;
+- (void)sliderChangeSpeed:(UISlider *)sender;
 
 @end

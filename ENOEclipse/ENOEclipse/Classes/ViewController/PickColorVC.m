@@ -82,19 +82,14 @@
 - (void)clickedButton:(UIButton *)sender {
     CGPoint point = [self getRandomPointWithRect:imgRect];
     imgPick.center = point;
-}
-
-- (void)sliderChangeLantern:(UISlider *)sender {
-    CGFloat value = sender.value*10;
-    NSLog(@"%f", value);
+    NSString *str =@"ED1D24";
+    NSString *strResult = [NSString stringWithFormat:@"%@%@%@%@%@%@",str,str,str,str,str,str];
+    //发出指令
+    NSString *str1 = [NSString stringWithFormat:@"0407%@",[strResult substringToIndex:28]];
+    [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str1 pageNum:1];
     
-    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
-}
-
-- (void)sliderChangeSpeed:(UISlider *)sender {
-    CGFloat value = sender.value;
-    NSLog(@"%f", value);
-    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+    NSString *str2 = [NSString stringWithFormat:@"04080%d0%d%@",speedValue,lightValue,[strResult substringFromIndex:28]];
+    [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str2 pageNum:2];
 }
 
 - (CGPoint)getRandomPointWithRect:(CGRect) rect {

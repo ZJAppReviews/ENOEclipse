@@ -18,10 +18,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super init]) {
+        lightValue = 5;
+        speedValue = 2;
         rectView = frame;
         widthView = CGRectGetWidth(rectView);
         heightView = CGRectGetHeight(rectView);
         self.view.frame = rectView;
+
     }
     return self;
 }
@@ -41,9 +44,9 @@
 - (void)addLanternSlider {
     CGRect frame = CGRectMake(VIEW_MARGIN, heightView-105, widthView - VIEW_MARGIN*2, 20);
     sliderCircle = [[UISlider alloc] initWithFrame:frame];
-    sliderCircle.minimumValue = 0.1;
-    sliderCircle.maximumValue = 1;
-    sliderCircle.value = 0.5;
+    sliderCircle.minimumValue = 0.0;
+    sliderCircle.maximumValue = 1.0;
+    sliderCircle.value = lightValue/10.0;
     sliderCircle.continuous = NO;//默认YES  如果设置为NO，则每次滑块停止移动后才触发事件
     [sliderCircle addTarget:self action:@selector(sliderChangeLantern:) forControlEvents:UIControlEventValueChanged];
     sliderCircle.minimumTrackTintColor = [UIColor colorMainLight];
@@ -60,6 +63,9 @@
 - (void)sliderChangeLantern:(UISlider *)sender {
     CGFloat value = sender.value;
     NSLog(@"%f", value);
+    lightValue = round(value*10);
+    NSLog(@"speedValue>>>>%d", lightValue);
+    sender.value = lightValue/10.0;
 }
 
 //速度
@@ -67,8 +73,8 @@
     CGRect speedFrame = CGRectMake(VIEW_MARGIN, heightView-50, widthView - VIEW_MARGIN*2, 20);
     UISlider * speedSlider = [[UISlider alloc] initWithFrame:speedFrame];
     speedSlider.minimumValue = 0;
-    speedSlider.maximumValue = 1;
-    speedSlider.value = 0.2;
+    speedSlider.maximumValue = 0.5;
+    speedSlider.value = speedValue/10.0;
     speedSlider.continuous = NO;//默认YES  如果设置为NO，则每次滑块停止移动后才触发事件
     [speedSlider addTarget:self action:@selector(sliderChangeSpeed:) forControlEvents:UIControlEventValueChanged];
     speedSlider.minimumTrackTintColor = [UIColor colorMainLight];
@@ -85,6 +91,18 @@
 - (void)sliderChangeSpeed:(UISlider *)sender {
     CGFloat value = sender.value;
     NSLog(@"%f", value);
+    speedValue = round(value*10);
+    NSLog(@"speedValue>>>>%d", speedValue);
+    sender.value = speedValue/10.0;
 }
+
+- (BOOL)isCennectedLight {
+    BOOL isCen = [BLEService sharedInstance].isConnected;
+    if (!isCen) {
+        [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
+    }
+    return isCen;
+}
+
 
 @end

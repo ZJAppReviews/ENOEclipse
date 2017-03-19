@@ -43,6 +43,17 @@
     baseTableView.delegate = self;
     baseTableView.dataSource = self;
     [self.view addSubview:baseTableView];
+    
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
 }
 
 - (void)didReceiveMemoryWarning {

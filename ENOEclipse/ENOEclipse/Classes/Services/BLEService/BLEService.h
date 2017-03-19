@@ -70,7 +70,7 @@ typedef NS_ENUM(NSUInteger, BLEOrderTypeSetPage) {
  BLEOrderTypeCustom = 0,  //自定义模式-3
  BLEOrderTypeBreathe,     //呼吸模式-4
  */
-- (void)setBLEPageWithType:(BLEOrderTypeSet)orderType value:(NSString *)string;
+- (void)setBLEPageWithType:(BLEOrderTypeSetPage)orderType value:(NSString *)string pageNum:(int)page;
 
 - (void)bloodPressureStartBlock:(void (^)(NSString *str))startBlock retuneValueBlock:(void (^)(int value))retuneValueBlock disConnectBlock:(void (^)())disConnectBlock failBlock:(void (^)(int errorCode))failBlock endBlock:(void (^)(int high,int low,int heart))endBlock;
 

@@ -65,11 +65,11 @@ static BLEService *_instance = nil;
     NSData *data1 = [BabyToy convertHexStrToData:strOrder];
     
     //05
-    strOrder = [NSString stringWithFormat:@"%@05%@",strHead,strTail];
+    strOrder = [NSString stringWithFormat:@"%@050a05%@",strHead,strTail];
     NSData *data2 = [BabyToy convertHexStrToData:strOrder];
     
     //0F
-    strOrder = [NSString stringWithFormat:@"%@0F%@",strHead,strTail];
+    strOrder = [NSString stringWithFormat:@"%@05040F%@",strHead,strTail];
     NSData *data3 = [BabyToy convertHexStrToData:strOrder];
     
     orderValues = [[NSMutableArray alloc] initWithObjects:data1, data2, data3, nil];
@@ -77,16 +77,16 @@ static BLEService *_instance = nil;
 
 //得到验证码,http://www.cnblogs.com/Jeamine/p/5210890.html
 - (NSString *)getCodeWithLength:(NSString *)strLength data:(NSString *)strData {
-
-    NSData *tempData = [BabyToy convertHexStrToData:strData];
+    NSString *allData = [NSString stringWithFormat:@"%@%@",strLength,strData];
+    NSData *tempData = [BabyToy convertHexStrToData:allData];
     int length = (int)tempData.length;
     Byte *bytes = (unsigned char *)[tempData bytes];
     Byte sum = 0;
     for (int i = 0; i<length; i++) {
         sum += bytes[i];
     }
-    int sumT = sum+[BabyToy convertHexStrToInt:strLength];
-    int at = sumT%256;
+//    int sumT = sum+[BabyToy convertHexStrToInt:strLength];
+    int at = sum%256;
     NSData *data = [BabyToy ConvertIntToData:at];
     NSString *code = [BabyToy convertDataToHexStr:data];
     
@@ -101,21 +101,24 @@ static BLEService *_instance = nil;
 - (NSData *)getBLEOrderType:(BLEOrderTypeSet)type value:(NSString *)string{
     NSString *strOrder;
     switch (type) {
-        case 0: {//01,格式：AA55+07+校验和+命令码+亮度+速度+00*13
-//            strOrder = [NSString stringWithFormat:@"%@07XX01%@0000000000-0000000000-000000",strHead,string];
+        case BLEOrderTypeLight: {//01,格式：AA55+07+校验和+命令码+亮度+速度+00*13
             NSString *strL = @"07";
             NSString *code = [self getCodeWithLength:strL data:string];
-            NSString *code1 = [self getCodeWithLength:@"05" data:@"0000"];
-            NSString *code2 = [self getCodeWithLength:@"14" data:@"0307feb3683f7e6051f2f051462f4f00"];
+//            NSString *code1 = [self getCodeWithLength:@"05" data:@"0000"];
+//            NSString *code2 = [self getCodeWithLength:@"14" data:@"0307feb3683f7e6051f2f051462f4f00"];
+            strOrder = [NSString stringWithFormat:@"%@%@%@%@00000000000000000000000000",strHead,strL,code,string];
+        }
+            break;
+        case BLEOrderTypeFixed: {//02,格式：AA55+06+校验和+命令码+模式+00*14
+            NSString *strL = @"06";
+            NSString *code = [self getCodeWithLength:strL data:string];
             strOrder = [NSString stringWithFormat:@"%@%@%@%@0000000000000000000000000000",strHead,strL,code,string];
         }
             break;
-        case 1: {//02,格式：AA55+06+校验和+命令码+模式+00*14
-            strOrder = [NSString stringWithFormat:@"%@06XX02%@0000000000-0000000000-00000000",strHead,string];
-        }
-            break;
-        case 2: {//03,格式：AA55+06+校验和+命令码+时间+00*14
-            strOrder = [NSString stringWithFormat:@"%@B5%@0000000000000000000000000000CC",strHead,string];
+        case BLEOrderTypeSleep: {//03,格式：AA55+06+校验和+命令码+时间+00*14
+            NSString *strL = @"06";
+            NSString *code = [self getCodeWithLength:strL data:string];
+            strOrder = [NSString stringWithFormat:@"%@%@%@%@0000000000000000000000000000",strHead,strL,code,string];
         }
             break;
         default:
@@ -135,19 +138,33 @@ static BLEService *_instance = nil;
  第一包：04,格式：AA55+20+校验和+04+07+【00-255】*14
  第二包：04,格式：AA55+12+校验和+04+08+【00-255】*4+亮度+速度+00*8
  */
-- (NSData *)getBLEOrderPageType:(BLEOrderTypeSet)type value:(NSString *)string{
-    NSString *strOrder;
-    switch (type) {//01
-        case 0: {
-            strOrder = [NSString stringWithFormat:@"%@B0%@0000000000000000CC",strHead,string];
+- (NSData *)getBLEOrderPageType:(BLEOrderTypeSetPage)type value:(NSString *)string pageNum:(int)page {
+    NSString *strOrder ;
+    switch (type) {
+        case BLEOrderTypeCustom: {
+            if (page == 1) {
+                NSString *strL = @"14";
+                NSString *code = [self getCodeWithLength:strL data:string];
+                strOrder = [NSString stringWithFormat:@"%@%@%@%@",strHead,strL,code,string];
+            }
+            else {
+                NSString *strL = @"0b";
+                NSString *code = [self getCodeWithLength:strL data:string];
+                strOrder = [NSString stringWithFormat:@"%@%@%@%@000000000000000000",strHead,strL,code,string];
+            }
         }
             break;
-        case 1: {//02
-            strOrder = [NSString stringWithFormat:@"%@B2%@CC",strHead,string];//230805     082305     FFFFFF 201601012359
-        }
-            break;
-        case 2: {//03
-            strOrder = [NSString stringWithFormat:@"%@B5%@0000000000000000000000000000CC",strHead,string];
+        case BLEOrderTypeBreathe: {
+            if (page == 1) {
+                NSString *strL = @"14";
+                NSString *code = [self getCodeWithLength:strL data:string];
+                strOrder = [NSString stringWithFormat:@"%@%@%@%@",strHead,strL,code,string];
+            }
+            else {
+                NSString *strL = @"0c";
+                NSString *code = [self getCodeWithLength:strL data:string];
+                strOrder = [NSString stringWithFormat:@"%@%@%@%@0000000000000000",strHead,strL,code,string];
+            }
         }
             break;
         default:
@@ -168,6 +185,7 @@ static BLEService *_instance = nil;
 
 - (instancetype)init {
     if (self = [super init]) {
+        _isConnected = NO;
         //初始化BabyBluetooth 蓝牙库
         _babyBluetooth = [BabyBluetooth shareBabyBluetooth];
 //        设置蓝牙委托
@@ -342,6 +360,7 @@ static BLEService *_instance = nil;
 //        [weakSelf pauseScanBLE];
         DLog(@"设备：%@--连接成功",peripheral.name);
         if (weakSelf.connectBlock) {
+            _isConnected = YES;
             weakSelf.connectBlock();
         }
     }];  
@@ -349,6 +368,7 @@ static BLEService *_instance = nil;
     [_babyBluetooth setBlockOnFailToConnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
         DLog(@"设备：%@--连接失败",peripheral.name);
         if (weakSelf.connectFailBlock) {
+            _isConnected = NO;
             weakSelf.connectFailBlock();
         }
     }];
@@ -357,6 +377,7 @@ static BLEService *_instance = nil;
     [_babyBluetooth setBlockOnDisconnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
         DLog(@"设备：%@--断开连接",peripheral.name);
         if (weakSelf.disConnectBlock) {
+            _isConnected = NO;
             weakSelf.disConnectBlock();
         }
     }];
@@ -386,6 +407,7 @@ static BLEService *_instance = nil;
                 }
                 if (notifiyCharacteristic && writeCharacteristic) {
                     if (weakSelf.startOrderBlock) {
+                        _isConnected = YES;
                         weakSelf.startOrderBlock();
                     }
                     
@@ -450,14 +472,19 @@ static BLEService *_instance = nil;
     [_babyBluetooth notify:currPeripheral
   characteristic:notifiyCharacteristic
            block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
-               DLog(@"notify block");
-               DLog(@"读取的值UUID:%@",characteristics.UUID.UUIDString);
-               [self dealReadData:characteristics.value];
+               DLog(@"监听通知通道,读取的值:%@",characteristics.value);
+               return;
+//               [self dealReadData:characteristics.value];
     }];
 }
 
 //下发指令到设备
 - (void)writeOrderWithType:(BLEOrderType)orderType {
+    if (!writeCharacteristic) {
+        [SVProgressHUD showInfoWithStatus:@"cennected light fail"];
+        //redo 需要重新连接
+        return;
+    }
     NSData *data = [orderValues objectAtIndex:orderType];
     if (data) {
         NSString *str = [NSString stringWithFormat:@"下发指令-%@:%@", orderNames[orderType],[BabyToy convertDataToHexStr:data]];
@@ -470,6 +497,11 @@ static BLEService *_instance = nil;
 
 //设置参数
 - (void)setBLEWithType:(BLEOrderTypeSet)orderType value:(NSString *)string{
+    if (!writeCharacteristic) {
+        [SVProgressHUD showInfoWithStatus:@"cennected light fail"];
+        //redo 需要重新连接
+        return;
+    }
     NSData *data = [self getBLEOrderType:orderType value:string];
     if (data) {
         NSString *str = [NSString stringWithFormat:@"下发指令-%@:%@", orderSetNames[orderType],[BabyToy convertDataToHexStr:data]];
@@ -481,15 +513,15 @@ static BLEService *_instance = nil;
 }
 
 //设置参数分包
-- (void)setBLEPageWithType:(BLEOrderTypeSet)orderType value:(NSString *)string {
-    NSData *data = [self getBLEOrderPageType:orderType value:string];
+- (void)setBLEPageWithType:(BLEOrderTypeSetPage)orderType value:(NSString *)string pageNum:(int)page {
+    NSData *data = [self getBLEOrderPageType:orderType value:string pageNum:page ];
     if (data) {
         NSString *str = [NSString stringWithFormat:@"下发指令-%@:%@", orderSetNames[orderType],[BabyToy convertDataToHexStr:data]];
         if (self.startBlock) {
             self.startBlock(str);
         }
     }
-    [currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    [currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithoutResponse];
 }
 
 
