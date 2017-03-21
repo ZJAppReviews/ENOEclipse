@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/ViewController/BLEConnectVC.m"
-            timestampString = "511279410.118707"
+            filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
+            timestampString = "511755583.600639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "-scanBloodPressure"
+            startingLineNumber = "494"
+            endingLineNumber = "494"
+            landmarkName = "-writeOrderWithType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/ViewController/BLEConnectVC.m"
-            timestampString = "511279419.141387"
+            filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
+            timestampString = "511755587.38037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "-scanBloodPressure"
+            startingLineNumber = "523"
+            endingLineNumber = "523"
+            landmarkName = "-setBLEPageWithType:value:pageNum:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
+            timestampString = "511755593.32071"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "511"
+            endingLineNumber = "511"
+            landmarkName = "-setBLEWithType:value:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

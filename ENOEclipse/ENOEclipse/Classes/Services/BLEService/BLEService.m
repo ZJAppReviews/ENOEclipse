@@ -398,11 +398,11 @@ static BLEService *_instance = nil;
                 CBCharacteristic *c = service.characteristics[row];
                 NSString *strCUUID = c.UUID.UUIDString;
                 DLog(@"===Characteristic name:%@:%@",c.UUID,strCUUID);
-                if ([strCUUID isEqualToString:@"FFE1"]) {
+                if ([strCUUID isEqualToString:@"FFE2"]) {
                     notifiyCharacteristic = c;
                     [weakSelf setNotifiy];
                 }
-                else if ([strCUUID isEqualToString:@"FFE2"]) {
+                else if ([strCUUID isEqualToString:@"FFE1"]) {
                     writeCharacteristic = c;
                 }
                 if (notifiyCharacteristic && writeCharacteristic) {
@@ -410,7 +410,6 @@ static BLEService *_instance = nil;
                         _isConnected = YES;
                         weakSelf.startOrderBlock();
                     }
-                    
                 }
             }
         }
