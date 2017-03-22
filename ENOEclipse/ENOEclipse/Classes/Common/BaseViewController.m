@@ -104,5 +104,8 @@
     return isCen;
 }
 
+- (void)handUpateView {
+    
+}
 
 @end

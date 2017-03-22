@@ -360,6 +360,7 @@ static BLEService *_instance = nil;
 //        [weakSelf pauseScanBLE];
         DLog(@"设备：%@--连接成功",peripheral.name);
         if (weakSelf.connectBlock) {
+            [SVProgressHUD showInfoWithStatus:@"connected BLE succeed"];
             _isConnected = YES;
             weakSelf.connectBlock();
         }
@@ -407,6 +408,7 @@ static BLEService *_instance = nil;
                 }
                 if (notifiyCharacteristic && writeCharacteristic) {
                     if (weakSelf.startOrderBlock) {
+                        [SVProgressHUD showInfoWithStatus:@"Get Write and Notifiy Characteristic succeed"];
                         _isConnected = YES;
                         weakSelf.startOrderBlock();
                     }
@@ -454,11 +456,11 @@ static BLEService *_instance = nil;
     
     //设置写数据成功的block
     [_babyBluetooth setBlockOnDidWriteValueForCharacteristicAtChannel:channelOnCharacteristicView block:^(CBCharacteristic *characteristic, NSError *error) {
-        DLog(@"setBlockOnDidWriteValueForCharacteristicAtChannel characteristic:%@ and new value:%@",characteristic.UUID, characteristic.value);
+        DLog(@">>>>>>>>>WriteValue characteristic:%@ and new value:%@",characteristic.UUID, characteristic.value);
     }];
     
     [_babyBluetooth setBlockOnDidWriteValueForDescriptor:^(CBDescriptor *descriptor,NSError *error){
-        
+        DLog(@">>>>>>>>> OnDidWriteValue characteristic:%@ and new value:%@",descriptor.UUID, error);
     }];
     //设置通知状态改变的block
     [_babyBluetooth setBlockOnDidUpdateNotificationStateForCharacteristicAtChannel:channelOnCharacteristicView block:^(CBCharacteristic *characteristic, NSError *error) {
@@ -480,7 +482,7 @@ static BLEService *_instance = nil;
 //下发指令到设备
 - (void)writeOrderWithType:(BLEOrderType)orderType {
     if (!writeCharacteristic) {
-        [SVProgressHUD showInfoWithStatus:@"cennected light fail"];
+        [SVProgressHUD showInfoWithStatus:@"Write characteristic is nil"];
         //redo 需要重新连接
         return;
     }

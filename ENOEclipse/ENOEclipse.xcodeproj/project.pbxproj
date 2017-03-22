@@ -39,6 +39,7 @@
 		6AB2A7A01E1B946000F01E9D /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7911E1B946000F01E9D /* SVRadialGradientLayer.m */; };
 		6AB2A7A11E1B946000F01E9D /* YYAshapelGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7941E1B946000F01E9D /* YYAshapelGradientView.m */; };
 		6AB2A7A61E1B94A200F01E9D /* BLEService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7A51E1B94A200F01E9D /* BLEService.m */; };
+		6AE748331E813D0F006D56E7 /* UserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE748321E813D0F006D56E7 /* UserDefaultsHelper.m */; };
 		9F7DA1671E2CFC1000C88CDA /* YYCircleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7DA1661E2CFC1000C88CDA /* YYCircleSlider.m */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +127,8 @@
 		6AB2A7A41E1B94A200F01E9D /* BLEService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEService.h; sourceTree = "<group>"; };
 		6AB2A7A51E1B94A200F01E9D /* BLEService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEService.m; sourceTree = "<group>"; };
 		6AB2A7A71E1B961300F01E9D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		6AE748311E813D0F006D56E7 /* UserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsHelper.h; sourceTree = "<group>"; };
+		6AE748321E813D0F006D56E7 /* UserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsHelper.m; sourceTree = "<group>"; };
 		9F7DA1651E2CFC1000C88CDA /* YYCircleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCircleSlider.h; sourceTree = "<group>"; };
 		9F7DA1661E2CFC1000C88CDA /* YYCircleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCircleSlider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,6 +249,8 @@
 				521E41161E09322B00E2B00F /* CommonDefined.h */,
 				30B863E01E0EB85B0099E7BC /* UIColor+YY.h */,
 				30B863E11E0EB85B0099E7BC /* UIColor+YY.m */,
+				6AE748311E813D0F006D56E7 /* UserDefaultsHelper.h */,
+				6AE748321E813D0F006D56E7 /* UserDefaultsHelper.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				6AB2A79C1E1B946000F01E9D /* BabyToy.m in Sources */,
 				6AB2A7A01E1B946000F01E9D /* SVRadialGradientLayer.m in Sources */,
 				521E40FF1E092A0000E2B00F /* LanternVC.m in Sources */,
+				6AE748331E813D0F006D56E7 /* UserDefaultsHelper.m in Sources */,
 				6AB2A7A61E1B94A200F01E9D /* BLEService.m in Sources */,
 				6AB2A79B1E1B946000F01E9D /* BabySpeaker.m in Sources */,
 				6AB2A7A11E1B946000F01E9D /* YYAshapelGradientView.m in Sources */,

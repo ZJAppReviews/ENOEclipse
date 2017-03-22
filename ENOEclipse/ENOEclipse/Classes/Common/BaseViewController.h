@@ -11,6 +11,7 @@
 #import "UIColor+YY.h"
 #import "BLEService.h"
 #import "SVProgressHUD.h"
+#import "UserDefaultsHelper.h"
 
 @interface BaseViewController : UIViewController {
     CGRect rectView;
@@ -35,5 +36,7 @@
 
 - (void)sliderChangeLantern:(UISlider *)sender;
 - (void)sliderChangeSpeed:(UISlider *)sender;
+
+- (void)handUpateView;
 
 @end

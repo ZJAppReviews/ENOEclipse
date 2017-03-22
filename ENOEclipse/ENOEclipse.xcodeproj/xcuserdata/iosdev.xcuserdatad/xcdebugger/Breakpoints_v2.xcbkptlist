@@ -6,32 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/ViewController/LavaLampVC.m"
-            timestampString = "506246580.232257"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/ViewController/LavaLampVC.m"
-            timestampString = "506246580.232257"
+            filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
+            timestampString = "511792265.257156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
+            startingLineNumber = "530"
+            endingLineNumber = "530"
+            landmarkName = "-dealReadData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511755583.600639"
+            timestampString = "511792265.257156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494"
-            landmarkName = "-writeOrderWithType:"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
+            landmarkName = "-babyDelegate"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511755587.38037"
+            timestampString = "511792265.257156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "523"
-            endingLineNumber = "523"
-            landmarkName = "-setBLEPageWithType:value:pageNum:"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
+            landmarkName = "-babyDelegate"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +57,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511755593.32071"
+            filePath = "ENOEclipse/Classes/ThirdCode/BLE/BabyBluetooth/BabyCentralManager.m"
+            timestampString = "511791277.008233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
-            landmarkName = "-setBLEWithType:value:"
+            startingLineNumber = "366"
+            endingLineNumber = "366"
+            landmarkName = "-peripheral:didWriteValueForCharacteristic:error:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ENOEclipse/Classes/Common/UserDefaultsHelper.m"
+            timestampString = "511796946.635557"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "+saveOneSurrent:isAuto:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

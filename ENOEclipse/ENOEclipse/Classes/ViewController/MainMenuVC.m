@@ -172,7 +172,7 @@
     bt_selected = (UIButton *)[self.view viewWithTag:index];
     bt_selected.selected = YES;
     
-    UIViewController *vc = self.childViewControllers[index-10000];
+    BaseViewController *vc = self.childViewControllers[index-10000];
     UIView *view = vc.view;
     
     BOOL isContain = [[midView subviews] containsObject:view];
@@ -188,6 +188,8 @@
             [[BLEService sharedInstance] writeOrderWithType:BLEOrderTypeGetMCU];
         }
     }
+    
+    [vc handUpateView];
 }
 
 

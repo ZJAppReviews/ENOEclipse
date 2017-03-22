@@ -88,6 +88,10 @@
     NSString *str1 = [NSString stringWithFormat:@"0407%@",[strResult substringToIndex:28]];
     [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str1 pageNum:1];
     
+    [self performSelector:@selector(delayMethod:) withObject:strResult afterDelay:0.2];
+}
+
+- (void)delayMethod:(NSString *)strResult{
     NSString *str2 = [NSString stringWithFormat:@"04080%d0%d%@",speedValue,lightValue,[strResult substringFromIndex:28]];
     [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str2 pageNum:2];
 }

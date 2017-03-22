@@ -58,7 +58,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UITableViewCell *cell = nil;//[tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -72,7 +72,7 @@
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%@",name];
     cell.textLabel.textColor = [UIColor colorMainLight];
-    cell.textLabel.font = [UIFont systemFontOfSize:26];
+    cell.textLabel.font = [UIFont systemFontOfSize:22];
     
     //按钮
     CGRect rect = CGRectMake(widthView-140-VIEW_MARGIN, 20, 140, 60);

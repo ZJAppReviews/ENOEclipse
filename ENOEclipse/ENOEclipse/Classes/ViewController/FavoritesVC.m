@@ -10,7 +10,7 @@
 
 @interface FavoritesVC ()<UITableViewDelegate,UITableViewDataSource> {
     NSArray *bleList;
-    NSArray *detailList;
+    UITableView *baseTableView;
 }
 
 
@@ -32,13 +32,12 @@
     [bt setTitle:@"SAVE SURRENT" forState:UIControlStateNormal];
     bt.titleLabel.font = [UIFont systemFontOfSize:26];
     [bt addTarget:self action:@selector(clickeSave:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:bt];
+//    [self.view addSubview:bt];
     
-    bleList = @[@"Custom Name A",@"Custom Name B",@"Custom Name C"];
-    detailList = @[@"Oct 10, 2016",@"Date",@"Date"];
+    bleList = [[NSArray alloc] initWithArray:[UserDefaultsHelper getSurrentList]];
     
-    CGRect rectTable = CGRectMake(0, 130, widthView, heightView-130);
-    UITableView *baseTableView = [[UITableView alloc] initWithFrame:rectTable style:UITableViewStyleGrouped];
+    CGRect rectTable = CGRectMake(0, 20, widthView, heightView-25);
+    baseTableView = [[UITableView alloc] initWithFrame:rectTable style:UITableViewStyleGrouped];
     baseTableView.backgroundColor = [UIColor whiteColor];
     baseTableView.delegate = self;
     baseTableView.dataSource = self;
@@ -84,17 +83,19 @@
     }
     
     NSInteger row = indexPath.row;
-    cell.textLabel.text = bleList[row];
+    NSDictionary *tempDic = bleList[row];
+    cell.textLabel.text = [tempDic objectForKey:@"name"];
     cell.textLabel.textColor = [UIColor colorMainLight];
     cell.textLabel.font = [UIFont systemFontOfSize:26];
     
-    cell.detailTextLabel.text = detailList[row];
+    cell.detailTextLabel.text = [self getTimeFromDate:[tempDic objectForKey:@"date"]];
     cell.detailTextLabel.textColor = [UIColor colorMainLight];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:18];
     
     //按钮
     CGRect rect = CGRectMake(widthView-120-VIEW_MARGIN, 20, 120, 60);
     UIButton *bt = [[UIButton alloc] initWithFrame:rect];
+    bt.tag = row;
     bt.layer.borderWidth = 0.5;
     bt.layer.borderColor = [UIColor colorMainLight].CGColor;
     bt.layer.cornerRadius = 30;
@@ -124,16 +125,35 @@
 
 
 - (void)clickedButton:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    [SVProgressHUD showInfoWithStatus:@"Not cennected light"];
-//    if (sender.selected) {
-//        [sender setTitle:@"DISCONNECT" forState:UIControlStateSelected];
-//    }
-//    else {
-//        [sender setTitle:@"CONNECT" forState:UIControlStateNormal];
-//    }
+    if ([self isCennectedLight]) {
+        NSInteger row = sender.tag;
+        NSDictionary *tempDic = bleList[row];
+        NSString *strResult = [tempDic objectForKey:@"color"];
+        //发出指令
+        NSString *str1 = [NSString stringWithFormat:@"0307%@",[strResult substringToIndex:28]];
+        [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeCustom value:str1 pageNum:1];
+        
+        [self performSelector:@selector(delayMethod:) withObject:tempDic afterDelay:0.2];
+    }
+}
+
+- (void)delayMethod:(NSDictionary *)tempDic{
+    NSString *str2 = [NSString stringWithFormat:@"03080%@%@",[tempDic objectForKey:@"speed"],[[tempDic objectForKey:@"color"] substringFromIndex:28]];
+    [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeCustom value:str2 pageNum:2];
 }
 
 
+- (NSString *)getTimeFromDate:(NSDate *)date {
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setLocale:[NSLocale currentLocale]];
+    [outputFormatter setDateFormat:@"MMM,yyyy,dd"];
+    NSString *retStr = [outputFormatter stringFromDate:date];
+    return retStr;
+}
+
+- (void)handUpateView {
+    bleList = [[NSArray alloc] initWithArray:[UserDefaultsHelper getSurrentList]];
+    [baseTableView reloadData];
+}
 
 @end
