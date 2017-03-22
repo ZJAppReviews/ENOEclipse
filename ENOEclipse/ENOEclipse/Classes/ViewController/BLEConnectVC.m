@@ -18,6 +18,12 @@
 @implementation BLEConnectVC
 
 - (void)scanBloodPressure {
+    [[BLEService sharedInstance] pauseScanBLE];
+    if (bleList.count>0) {
+        [bleList removeAllObjects];
+        [baseTableView reloadData];
+    }
+    
     [[BLEService sharedInstance] startScanBLETime:20.0 successBlock:^(CBPeripheral *peripheral, NSString *strMac) {
         if (![bleList containsObject:peripheral]) {
             [bleList addObject:peripheral];
@@ -39,6 +45,9 @@
     baseTableView.delegate = self;
     baseTableView.dataSource = self;
     [self.view addSubview:baseTableView];
+    
+    //
+    [self addMJRefreshHeader];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +55,47 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma MJRefresh,上拉加载，下拉刷新
+//添加下拉刷新
+- (void)addMJRefreshHeader {
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    // 设置自动切换透明度(在导航栏下面自动隐藏)
+    header.loadingView.color = [UIColor colorGragLight];
+    // 隐藏时间
+    header.lastUpdatedTimeLabel.hidden = YES;
+    // 马上进入刷新状态
+    //    [header beginRefreshing];
+    // 设置header
+    baseTableView.mj_header = header;
+}
+
+//添加上拉加载
+- (void)addMJRefreshFooter {
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    // 当上拉刷新控件出现50%时（出现一半），就会自动刷新。这个值默认是1.0（也就是上拉刷新100%出现时，才会自动刷新）
+    //    footer.triggerAutomaticallyRefreshPercent = 0.5;
+    // 隐藏刷新状态的文字
+    footer.loadingView.color = [UIColor colorGragLight];
+    // 设置footer
+    baseTableView.mj_footer = footer;
+}
+
+//下拉刷新数据
+- (void)loadNewData{
+    [self scanBloodPressure];
+    [self performSelector:@selector(endUpdate) withObject:self afterDelay:1.0];
+}
+
+- (void)endUpdate {
+    [baseTableView.mj_header endRefreshing];
+}
+
+//上拉加载更多数据
+- (void)loadMoreData{
+    
+}
 
 #pragma mark - Table view data source
 
@@ -99,7 +149,16 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 1;
+    return 10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UILabel *lb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, widthView, 40)];
+    lb.textAlignment = NSTextAlignmentCenter;
+    lb.font = [UIFont systemFontOfSize:14];
+    lb.textColor = [UIColor grayColor];
+    lb.text = [NSString stringWithFormat:@"Version:%@", [[[NSBundle mainBundle]infoDictionary]valueForKey:@"CFBundleVersion"]];
+    return lb;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -110,18 +169,17 @@
 - (void)clickedButton:(UIButton *)sender {
     CBPeripheral *selPer = [bleList objectAtIndex:sender.tag];
     if (!sender.selected) {
+        [SVProgressHUD showWithStatus:@"Connecting..."];
         [[BLEService sharedInstance] connectPeripheral:selPer successBlock:^() {
+            [[BLEService sharedInstance] pauseScanBLE];
+        } failBlock:^() {
+            [SVProgressHUD showInfoWithStatus:@"Connect ENOEclipse Fail"];
+        } startOrderBlock:^() {
+            [SVProgressHUD showInfoWithStatus:@"Connect ENOEclipse succeed"];
             if (!sender.selected) {
                 sender.selected = YES;
                 [sender setTitle:@"DISCONNECT" forState:UIControlStateSelected];
             }
-        } failBlock:^() {
-            [SVProgressHUD showInfoWithStatus:@"Connect ENOEclipse Fail"];
-        } startOrderBlock:^() {
-            //初始化完成，加载指令
-            
-            //测量过程
-            //[self dealBLEData];
         }];
     }
     else {

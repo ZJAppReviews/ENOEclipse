@@ -13,6 +13,8 @@
 #import "SVProgressHUD.h"
 #import "UserDefaultsHelper.h"
 
+#import "MJRefresh.h"
+
 @interface BaseViewController : UIViewController {
     CGRect rectView;
     int widthView;
@@ -38,5 +40,6 @@
 - (void)sliderChangeSpeed:(UISlider *)sender;
 
 - (void)handUpateView;
+
 
 @end

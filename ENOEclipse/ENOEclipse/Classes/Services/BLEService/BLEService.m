@@ -312,15 +312,14 @@ static BLEService *_instance = nil;
     
     //设置查找设备的过滤器
     [_babyBluetooth setFilterOnDiscoverPeripherals:^BOOL(NSString *peripheralName) {
-        return YES;
 //        DLog(@"name:%@",peripheralName);
-        //设置查找规则是名称大于1 ， the search rule is peripheral.name length > 2
-//        if ([peripheralName isEqualToString:@"QianShan01"]) {// || [peripheralName isEqualToString:@"BleSeriaPort"] || [peripheralName isEqualToString:@"TianjuSmart     "]
-//            return YES;
-//        }
-//        else{
-//            return NO;
-//        }
+//        设置查找规则是名称大于1 ， the search rule is peripheral.name length > 2
+        if (peripheralName.length<10) {// || [peripheralName isEqualToString:@"BleSeriaPort"] || [peripheralName isEqualToString:@"TianjuSmart     "]
+            return YES;
+        }
+        else{
+            return NO;
+        }
     }];
     
     
@@ -360,8 +359,8 @@ static BLEService *_instance = nil;
 //        [weakSelf pauseScanBLE];
         DLog(@"设备：%@--连接成功",peripheral.name);
         if (weakSelf.connectBlock) {
-            [SVProgressHUD showInfoWithStatus:@"connected BLE succeed"];
-            _isConnected = YES;
+//            [SVProgressHUD showInfoWithStatus:@"connected BLE succeed"];
+//            _isConnected = YES;
             weakSelf.connectBlock();
         }
     }];  
@@ -408,7 +407,6 @@ static BLEService *_instance = nil;
                 }
                 if (notifiyCharacteristic && writeCharacteristic) {
                     if (weakSelf.startOrderBlock) {
-                        [SVProgressHUD showInfoWithStatus:@"Get Write and Notifiy Characteristic succeed"];
                         _isConnected = YES;
                         weakSelf.startOrderBlock();
                     }
