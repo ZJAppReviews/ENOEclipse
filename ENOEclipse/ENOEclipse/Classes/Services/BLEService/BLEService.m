@@ -312,14 +312,15 @@ static BLEService *_instance = nil;
     
     //设置查找设备的过滤器
     [_babyBluetooth setFilterOnDiscoverPeripherals:^BOOL(NSString *peripheralName) {
+        return YES;
 //        DLog(@"name:%@",peripheralName);
 //        设置查找规则是名称大于1 ， the search rule is peripheral.name length > 2
-        if (peripheralName.length<10) {// || [peripheralName isEqualToString:@"BleSeriaPort"] || [peripheralName isEqualToString:@"TianjuSmart     "]
-            return YES;
-        }
-        else{
-            return NO;
-        }
+//        if (peripheralName.length<10) {// || [peripheralName isEqualToString:@"BleSeriaPort"] || [peripheralName isEqualToString:@"TianjuSmart     "]
+//            return YES;
+//        }
+//        else{
+//            return NO;
+//        }
     }];
     
     

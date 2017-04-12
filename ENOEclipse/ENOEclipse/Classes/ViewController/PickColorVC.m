@@ -21,12 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    YYAshapelGradientView *view = [[YYAshapelGradientView alloc] initWithFrame:CGRectMake(40, 40, widthView-80, widthView-80)];
-//    view.progressLineWidth = 20;//最大是45
-//    view.startAngle = -240;
-//    view.endAngle = 60;
-//    view.value = 1;
-//    [self.view addSubview:view];
     //选择颜色栏
     CGFloat width = widthView*0.85;
     imgRect = CGRectMake(0, 0, width, width/630*427);
@@ -53,14 +47,7 @@
     [bt setImage:[UIImage imageNamed:@"bt_random_light"] forState:UIControlStateHighlighted];
     [bt addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bt];
-    
-//    UIButton *bt_pick = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, widthView*0.05, widthView*0.05)];
-//    bt_pick.center = CGPointMake(widthView/2, heightView*0.2);
-//    [bt_pick setBackgroundImage:[UIImage imageNamed:@"color_pick_selected"] forState:UIControlStateNormal];
-//    [bt_pick addTarget:self action:@selector(clickedPickButton:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:bt_pick];
-    
-    
+
     //亮度
     [self addLanternSlider];
     //速度
@@ -71,6 +58,8 @@
 -(void)tapGesture:(UITapGestureRecognizer *)sender {
     CGPoint point = [sender locationInView:self.view];
     imgPick.center = point;
+    //redo
+    [self showLightWithColor];
 }
      
 
@@ -82,18 +71,8 @@
 - (void)clickedButton:(UIButton *)sender {
     CGPoint point = [self getRandomPointWithRect:imgRect];
     imgPick.center = point;
-    NSString *str =@"ED1D24";
-    NSString *strResult = [NSString stringWithFormat:@"%@%@%@%@%@%@",str,str,str,str,str,str];
-    //发出指令
-    NSString *str1 = [NSString stringWithFormat:@"0407%@",[strResult substringToIndex:28]];
-    [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str1 pageNum:1];
-    
-    [self performSelector:@selector(delayMethod:) withObject:strResult afterDelay:0.2];
-}
-
-- (void)delayMethod:(NSString *)strResult{
-    NSString *str2 = [NSString stringWithFormat:@"04080%d0%d%@",speedValue,lightValue,[strResult substringFromIndex:28]];
-    [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str2 pageNum:2];
+    //redo
+    [self showLightWithColor];
 }
 
 - (CGPoint)getRandomPointWithRect:(CGRect) rect {
@@ -103,5 +82,33 @@
     return point;
 }
 
+- (void)showLightWithColor {
+    NSString *str =@"ED1D24";
+    NSString *strResult = [NSString stringWithFormat:@"%@%@%@%@%@%@",str,str,str,str,str,str];
+    //发出指令
+    NSString *str1 = [NSString stringWithFormat:@"0407%@",[strResult substringToIndex:28]];
+    [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str1 pageNum:1];
+    
+    [self performSelector:@selector(delayMethod:) withObject:strResult afterDelay:0.2];
+}
+
+
+- (void)delayMethod:(NSString *)strResult{
+    NSString *str2 = [NSString stringWithFormat:@"04080%d0%d%@",speedValue,lightValue,[strResult substringFromIndex:28]];
+    [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str2 pageNum:2];
+}
+
+- (void)sliderChangeLantern:(UISlider *)sender {
+    [super sliderChangeLantern:sender];
+    //redo
+    [self showLightWithColor];
+}
+
+
+- (void)sliderChangeSpeed:(UISlider *)sender {
+    [super sliderChangeSpeed:sender];
+    //redo
+    [self showLightWithColor];
+}
 
 @end
