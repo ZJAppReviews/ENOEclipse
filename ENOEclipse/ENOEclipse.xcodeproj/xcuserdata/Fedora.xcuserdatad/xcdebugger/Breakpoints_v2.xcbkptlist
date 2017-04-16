@@ -202,12 +202,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ENOEclipse/Classes/ViewController/PickColorVC.m"
-            timestampString = "513701653.913589"
+            timestampString = "514054108.612024"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "-tapGesture:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ENOEclipse/Classes/ViewController/PickColorVC.m"
+            timestampString = "514054143.787594"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-showLightWithHexColor"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

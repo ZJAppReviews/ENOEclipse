@@ -60,6 +60,7 @@
 		6AB2A7A61E1B94A200F01E9D /* BLEService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2A7A51E1B94A200F01E9D /* BLEService.m */; };
 		6AE748331E813D0F006D56E7 /* UserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE748321E813D0F006D56E7 /* UserDefaultsHelper.m */; };
 		9F7DA1671E2CFC1000C88CDA /* YYCircleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7DA1661E2CFC1000C88CDA /* YYCircleSlider.m */; };
+		9FA943E41EA3D6650060B081 /* UIImage+YYColorPiont.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA943E31EA3D6650060B081 /* UIImage+YYColorPiont.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,8 @@
 		6AE748321E813D0F006D56E7 /* UserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsHelper.m; sourceTree = "<group>"; };
 		9F7DA1651E2CFC1000C88CDA /* YYCircleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCircleSlider.h; sourceTree = "<group>"; };
 		9F7DA1661E2CFC1000C88CDA /* YYCircleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCircleSlider.m; sourceTree = "<group>"; };
+		9FA943E21EA3D6650060B081 /* UIImage+YYColorPiont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YYColorPiont.h"; sourceTree = "<group>"; };
+		9FA943E31EA3D6650060B081 /* UIImage+YYColorPiont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YYColorPiont.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +221,7 @@
 		30B0E5E21E10336400843316 /* ThirdCode */ = {
 			isa = PBXGroup;
 			children = (
+				9FA943E11EA3D6250060B081 /* YYColorPiont */,
 				6A2FFAAF1E8287490095F29B /* MJRefresh */,
 				6AB2A7761E1B946000F01E9D /* BLE */,
 				6AB2A7881E1B946000F01E9D /* SVProgressHUD-master */,
@@ -513,6 +517,15 @@
 			path = BLEService;
 			sourceTree = "<group>";
 		};
+		9FA943E11EA3D6250060B081 /* YYColorPiont */ = {
+			isa = PBXGroup;
+			children = (
+				9FA943E21EA3D6650060B081 /* UIImage+YYColorPiont.h */,
+				9FA943E31EA3D6650060B081 /* UIImage+YYColorPiont.m */,
+			);
+			path = YYColorPiont;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -660,6 +673,7 @@
 				6AB2A7971E1B946000F01E9D /* BabyCentralManager.m in Sources */,
 				6A2FFADC1E8287490095F29B /* MJRefreshAutoFooter.m in Sources */,
 				521E40C11E09259400E2B00F /* AppDelegate.m in Sources */,
+				9FA943E41EA3D6650060B081 /* UIImage+YYColorPiont.m in Sources */,
 				6A2FFAEC1E8287490095F29B /* UIScrollView+MJExtension.m in Sources */,
 				521E410C1E092E5000E2B00F /* PowerSwicth.m in Sources */,
 				6A2FFAE31E8287490095F29B /* MJRefreshAutoStateFooter.m in Sources */,

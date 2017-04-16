@@ -8,11 +8,15 @@
 
 #import "PickColorVC.h"
 #import "YYAshapelGradientView.h"
+#import "UIImage+YYColorPiont.h"
 
 @interface PickColorVC () {
     UIImageView *imgView;
     UIImageView *imgPick;
     CGRect imgRect;
+    
+    UIImage *imageColor;
+    NSString *hexColor;
 }
 
 @end
@@ -25,7 +29,8 @@
     CGFloat width = widthView*0.85;
     imgRect = CGRectMake(0, 0, width, width/630*427);
     imgView = [[UIImageView alloc] initWithFrame:imgRect];
-    imgView.image = [UIImage imageNamed:@"color_pick"];
+    imageColor = [UIImage imageNamed:@"color_pick"];
+    imgView.image = imageColor;
     imgView.center = CGPointMake(widthView/2, heightView/3);
     imgView.userInteractionEnabled = YES;
     [self.view addSubview:imgView];
@@ -39,6 +44,8 @@
     imgPick.center = CGPointMake(width/2, heightView*0.1);
     imgPick.image = [UIImage imageNamed:@"color_pick_selected"];
     [imgView addSubview:imgPick];
+    
+    hexColor = [imageColor hexColorAtPixel:imgPick.center];
     
     //按钮
     UIButton *bt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, widthView*0.5, widthView*0.5)];
@@ -58,8 +65,9 @@
 -(void)tapGesture:(UITapGestureRecognizer *)sender {
     CGPoint point = [sender locationInView:self.view];
     imgPick.center = point;
-    //redo
-    [self showLightWithColor];
+    
+    hexColor = [imageColor hexColorAtPixel:point];
+    [self showLightWithHexColor];
 }
      
 
@@ -71,8 +79,9 @@
 - (void)clickedButton:(UIButton *)sender {
     CGPoint point = [self getRandomPointWithRect:imgRect];
     imgPick.center = point;
-    //redo
-    [self showLightWithColor];
+    
+    hexColor = [imageColor hexColorAtPixel:point];
+    [self showLightWithHexColor];
 }
 
 - (CGPoint)getRandomPointWithRect:(CGRect) rect {
@@ -82,8 +91,8 @@
     return point;
 }
 
-- (void)showLightWithColor {
-    NSString *str =@"ED1D24";
+- (void)showLightWithHexColor {
+    NSString *str = hexColor;
     NSString *strResult = [NSString stringWithFormat:@"%@%@%@%@%@%@",str,str,str,str,str,str];
     //发出指令
     NSString *str1 = [NSString stringWithFormat:@"0407%@",[strResult substringToIndex:28]];
@@ -101,14 +110,14 @@
 - (void)sliderChangeLantern:(UISlider *)sender {
     [super sliderChangeLantern:sender];
     //redo
-    [self showLightWithColor];
+    [self showLightWithHexColor];
 }
 
 
 - (void)sliderChangeSpeed:(UISlider *)sender {
     [super sliderChangeSpeed:sender];
     //redo
-    [self showLightWithColor];
+    [self showLightWithHexColor];
 }
 
 @end
