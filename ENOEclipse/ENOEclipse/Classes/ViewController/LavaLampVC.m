@@ -62,6 +62,16 @@
     [self addSpeedSlider];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -284,6 +294,12 @@
 - (void)sliderChangeSpeed:(UISlider *)sender {
     [super sliderChangeSpeed:sender];
     [self dealOrder];
+}
+
+- (void)handUpateView {
+    if (setView) {
+        setView.hidden = YES;
+    }
 }
 
 @end
