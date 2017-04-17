@@ -17,11 +17,34 @@
     
     UIImage *imageColor;
     NSString *hexColor;
+    //
+    CGPoint centerPoint;
+    int min;
+    int max;
 }
 
 @end
 
 @implementation PickColorVC
+
+-(UIImage*)OriginImage:(UIImage *)image scaleToSize:(CGSize)size
+{
+    // 创建一个bitmap的context
+    // 并把它设置成为当前正在使用的context
+    UIGraphicsBeginImageContext(size);
+    
+    // 绘制改变大小的图片
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
+    // 从当前context中创建一个改变大小后的图片
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    
+    // 返回新的改变大小后的图片
+    return scaledImage;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +52,7 @@
     CGFloat width = widthView*0.85;
     imgRect = CGRectMake(0, 0, width, width/630*427);
     imgView = [[UIImageView alloc] initWithFrame:imgRect];
-    imageColor = [UIImage imageNamed:@"color_pick"];
+    imageColor = [self OriginImage:[UIImage imageNamed:@"color_pick"] scaleToSize:CGSizeMake(width, width/630*427)] ;
     imgView.image = imageColor;
     imgView.center = CGPointMake(widthView/2, heightView/3);
     imgView.userInteractionEnabled = YES;
@@ -48,13 +71,17 @@
     hexColor = [imageColor hexColorAtPixel:imgPick.center];
     
     //按钮
-    UIButton *bt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, widthView*0.5, widthView*0.5)];
+    UIButton *bt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, widthView*0.28, widthView*0.28)];
     bt.center = CGPointMake(widthView/2, heightView*0.45);
-    [bt setImage:[UIImage imageNamed:@"bt_random"] forState:UIControlStateNormal];
-    [bt setImage:[UIImage imageNamed:@"bt_random_light"] forState:UIControlStateHighlighted];
+    [bt setBackgroundImage:[UIImage imageNamed:@"bt_random"] forState:UIControlStateNormal];
+    [bt setBackgroundImage:[UIImage imageNamed:@"bt_random_light"] forState:UIControlStateHighlighted];
     [bt addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bt];
-
+    
+    centerPoint = CGPointMake(CGRectGetWidth(imgView.frame)/2, CGRectGetHeight(imgView.frame)*0.76);
+//    imgPick.center = centerPoint;
+    min = width*0.25;
+    max = width/2;
     //亮度
     [self addLanternSlider];
     //速度
@@ -63,11 +90,12 @@
 
 //轻击手势触发方法
 -(void)tapGesture:(UITapGestureRecognizer *)sender {
-    CGPoint point = [sender locationInView:self.view];
-    imgPick.center = point;
-    
-    hexColor = [imageColor hexColorAtPixel:point];
-    [self showLightWithHexColor];
+    CGPoint point = [sender locationInView:imgView];
+    if ([self isImageContainWithPoint:point]) {
+        imgPick.center = point;
+        hexColor = [imageColor hexColorAtPixel:point];
+        [self showLightWithHexColor];
+    }
 }
      
 
@@ -85,10 +113,23 @@
 }
 
 - (CGPoint)getRandomPointWithRect:(CGRect) rect {
-    CGFloat x = (float)(1+arc4random()%24)/100 * CGRectGetWidth(rect);
-    CGFloat y = (float)(1+arc4random()%99)/100 * CGRectGetHeight(rect);
-    CGPoint point = CGPointMake(x, y);
+    CGPoint point;
+    BOOL is = YES;
+    do {
+        CGFloat x = (float)([self getRandomNumber:0 to:100])/100.0 * CGRectGetWidth(rect);
+        CGFloat y = (float)([self getRandomNumber:0 to:100])/100 * CGRectGetHeight(rect);
+        //    int dis = [self getRandomNumber:min to:max];
+        
+        point = CGPointMake(x, y);
+        is = [self isImageContainWithPoint:point];
+    } while (!is);
     return point;
+}
+
+//获取一个随机整数，范围在[from,to），包括from，不包括to
+-(int)getRandomNumber:(int)from to:(int)to
+{
+    return (int)(from + (arc4random() % (to-from + 1)));
 }
 
 - (void)showLightWithHexColor {
@@ -118,6 +159,24 @@
     [super sliderChangeSpeed:sender];
     //redo
     [self showLightWithHexColor];
+}
+
+//
+- (BOOL)isImageContainWithPoint:(CGPoint) point {
+    CGFloat distance = [self distanceBetweenPoints:centerPoint points:point];
+    if (distance>min && distance<max) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
+//两点间距离
+- (CGFloat)distanceBetweenPoints:(CGPoint)first points:(CGPoint)second {
+    CGFloat deltaX = second.x - first.x;
+    CGFloat deltaY = second.y - first.y;
+    return sqrt(deltaX*deltaX + deltaY*deltaY);
 }
 
 @end

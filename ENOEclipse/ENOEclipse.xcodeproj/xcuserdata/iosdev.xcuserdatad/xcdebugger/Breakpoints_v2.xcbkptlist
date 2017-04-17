@@ -25,38 +25,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511871369.468083"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
-            landmarkName = "-babyDelegate"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511871369.468083"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
-            landmarkName = "-babyDelegate"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ENOEclipse/Classes/ThirdCode/BLE/BabyBluetooth/BabyCentralManager.m"
             timestampString = "511791277.008233"
             startingColumnNumber = "9223372036854775807"
@@ -89,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/ViewController/BLEConnectVC.m"
-            timestampString = "511871548.240479"
+            filePath = "ENOEclipse/Classes/ThirdCode/YYColorPiont/UIImage+YYColorPiont.m"
+            timestampString = "514100418.565803"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-clickedButton:"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-hexColorAtPixel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
