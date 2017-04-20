@@ -37,7 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     bleList = [[NSMutableArray alloc] init];
-    [self scanBloodPressure];
     
     baseTableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     baseTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -49,6 +48,11 @@
     //
     [self addMJRefreshHeader];
 }
+
+- (void)handUpateView {
+    [self scanBloodPressure];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

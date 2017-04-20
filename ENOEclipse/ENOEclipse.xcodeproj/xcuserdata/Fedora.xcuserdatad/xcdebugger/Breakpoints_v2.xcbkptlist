@@ -186,12 +186,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
-            timestampString = "511544755.599509"
+            timestampString = "514394535.453997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
-            landmarkName = "-setBLEWithType:value:"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "-getBLEOrderPageType:value:pageNum:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -201,13 +201,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/ViewController/PickColorVC.m"
-            timestampString = "514054108.612024"
+            filePath = "ENOEclipse/Classes/Services/BLEService/BLEService.m"
+            timestampString = "514394890.622271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-tapGesture:"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-getBLEOrderPageType:value:pageNum:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -217,13 +217,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/ViewController/PickColorVC.m"
-            timestampString = "514054143.787594"
+            filePath = "ENOEclipse/Classes/ThirdCode/BLE/BabyBluetooth/BabyCentralManager.m"
+            timestampString = "514397371.95661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "-showLightWithHexColor"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "-peripheral:didDiscoverServices:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ENOEclipse/Classes/ThirdCode/BLE/BabyBluetooth/BabyCentralManager.m"
+            timestampString = "514397499.815846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "-peripheral:didUpdateValueForCharacteristic:error:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -233,13 +249,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ENOEclipse/Classes/ViewController/LavaLampVC.m"
-            timestampString = "514054824.887917"
+            filePath = "ENOEclipse/Classes/ViewController/BLEConnectVC.m"
+            timestampString = "514399355.965968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
-            landmarkName = "-handUpateView"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "-scanBloodPressure"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

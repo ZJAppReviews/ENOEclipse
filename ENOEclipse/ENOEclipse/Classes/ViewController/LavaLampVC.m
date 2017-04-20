@@ -45,7 +45,7 @@
         [self.view addSubview:view];
         
         UIButton *bt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, w, h)];
-        [bt setTitle:[NSString stringWithFormat:@"PRESENT FUNCTION #%d",i] forState:UIControlStateNormal];
+        [bt setTitle:[NSString stringWithFormat:@"PRESENT FUNCTION #%d",i+1] forState:UIControlStateNormal];
         if (i == 3) {//
             [bt setTitle:[NSString stringWithFormat:@"BUILD YOUR OWN MODE"] forState:UIControlStateNormal];
         }

@@ -21,6 +21,8 @@
     CGPoint centerPoint;
     int min;
     int max;
+    
+    UIButton *bt_random;
 }
 
 @end
@@ -71,12 +73,15 @@
     hexColor = [imageColor hexColorAtPixel:imgPick.center];
     
     //按钮
-    UIButton *bt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, widthView*0.28, widthView*0.28)];
-    bt.center = CGPointMake(widthView/2, heightView*0.45);
-    [bt setBackgroundImage:[UIImage imageNamed:@"bt_random"] forState:UIControlStateNormal];
-    [bt setBackgroundImage:[UIImage imageNamed:@"bt_random_light"] forState:UIControlStateHighlighted];
-    [bt addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:bt];
+    CGFloat btWidth = widthView*0.28;
+    bt_random = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btWidth, btWidth)];
+    bt_random.layer.cornerRadius = btWidth/2;
+    bt_random.center = CGPointMake(widthView/2, heightView*0.45);
+    [bt_random setBackgroundImage:[UIImage imageNamed:@"bt_random"] forState:UIControlStateNormal];
+    [bt_random setBackgroundImage:[UIImage imageNamed:@"bt_random_light"] forState:UIControlStateHighlighted];
+    [bt_random addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:bt_random];
+    [self setButtonBackgroudColor:imgPick.center];
     
     centerPoint = CGPointMake(CGRectGetWidth(imgView.frame)/2, CGRectGetHeight(imgView.frame)*0.76);
 //    imgPick.center = centerPoint;
@@ -88,10 +93,17 @@
     [self addSpeedSlider];
 }
 
+//修改按钮背景颜色
+- (void)setButtonBackgroudColor:(CGPoint)point {
+    UIColor *color = [imageColor colorAtPixel:point];
+    bt_random.backgroundColor = color;
+}
+
 //轻击手势触发方法
 -(void)tapGesture:(UITapGestureRecognizer *)sender {
     CGPoint point = [sender locationInView:imgView];
     if ([self isImageContainWithPoint:point]) {
+        [self setButtonBackgroudColor:point];
         imgPick.center = point;
         hexColor = [imageColor hexColorAtPixel:point];
         [self showLightWithHexColor];
@@ -107,7 +119,7 @@
 - (void)clickedButton:(UIButton *)sender {
     CGPoint point = [self getRandomPointWithRect:imgRect];
     imgPick.center = point;
-    
+    [self setButtonBackgroudColor:point];
     hexColor = [imageColor hexColorAtPixel:point];
     [self showLightWithHexColor];
 }
@@ -144,7 +156,7 @@
 
 
 - (void)delayMethod:(NSString *)strResult{
-    NSString *str2 = [NSString stringWithFormat:@"04080%d0%d%@",speedValue,lightValue,[strResult substringFromIndex:28]];
+    NSString *str2 = [NSString stringWithFormat:@"0408%@0%d0%d",[strResult substringFromIndex:28],lightValue,speedValue];
     [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str2 pageNum:2];
 }
 
