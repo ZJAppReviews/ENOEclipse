@@ -11,6 +11,8 @@
 @interface BLEConnectVC ()<UITableViewDelegate,UITableViewDataSource> {
     UITableView *baseTableView;
     NSMutableArray *bleList;
+    
+    CBPeripheral *curPeripheral;
 }
 
 @end
@@ -19,10 +21,13 @@
 
 - (void)scanBloodPressure {
     [[BLEService sharedInstance] pauseScanBLE];
-    if (bleList.count>0) {
-        [bleList removeAllObjects];
-        [baseTableView reloadData];
-    }
+//    if (bleList.count>0) {
+//        [bleList removeAllObjects];
+//        if (curPeripheral) {
+//            [bleList addObject:curPeripheral];
+//        }
+//        [baseTableView reloadData];
+//    }
     
     [[BLEService sharedInstance] startScanBLETime:20.0 successBlock:^(CBPeripheral *peripheral, NSString *strMac) {
         if (![bleList containsObject:peripheral]) {
@@ -49,8 +54,16 @@
     [self addMJRefreshHeader];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [self viewDidDisappear:animated];
+    [[BLEService sharedInstance] pauseScanBLE];
+}
+
 - (void)handUpateView {
-    [self scanBloodPressure];
+    if (![BLEService sharedInstance].isConnected) {
+        [self scanBloodPressure];
+    }
+    [baseTableView reloadData];
 }
 
 
@@ -88,8 +101,8 @@
 
 //下拉刷新数据
 - (void)loadNewData{
-    [self scanBloodPressure];
     [self performSelector:@selector(endUpdate) withObject:self afterDelay:1.0];
+    [self scanBloodPressure];
 }
 
 - (void)endUpdate {
@@ -137,7 +150,12 @@
     bt.layer.cornerRadius = 30;
     [bt setTitleColor:[UIColor colorMainLight] forState:UIControlStateNormal];
     [bt setTitleColor:[UIColor colorGrag] forState:UIControlStateHighlighted];
-    [bt setTitle:@"CONNECT" forState:UIControlStateNormal];
+    if (peripheral.state == CBPeripheralStateConnected) {
+        [bt setTitle:@"DISCONNECT" forState:UIControlStateNormal];
+    }
+    else {
+        [bt setTitle:@"CONNECT" forState:UIControlStateNormal];
+    }
     
     [bt addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
     [cell.contentView addSubview:bt];
@@ -181,6 +199,7 @@
         } startOrderBlock:^() {
             [SVProgressHUD showInfoWithStatus:@"Connect ENOEclipse succeed"];
             if (!sender.selected) {
+                curPeripheral = [bleList objectAtIndex:sender.tag];
                 sender.selected = YES;
                 [sender setTitle:@"DISCONNECT" forState:UIControlStateSelected];
             }
@@ -189,7 +208,7 @@
     else {
         sender.selected = NO;
         [sender setTitle:@"CONNECT" forState:UIControlStateNormal];
-        [[BLEService sharedInstance] cancelBLEConnection:selPer];
+        [[BLEService sharedInstance] cancelAllBLEConnection];
     }
 }
 

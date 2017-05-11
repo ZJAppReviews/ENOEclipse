@@ -57,9 +57,8 @@
 
 - (void)sliderChangeLantern:(UISlider *)sender {
     [super sliderChangeLantern:sender];
+    imgCircle.image = [UIImage imageNamed:[NSString stringWithFormat: @"circle%d",lightValue]];
     if ([self isCennectedLight]) {
-        
-        imgCircle.image = [UIImage imageNamed:[NSString stringWithFormat: @"circle%d",lightValue]];
         //发出指令
         [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeLight value:[NSString stringWithFormat:@"010%d0%d",lightValue,speedValue]];
     }

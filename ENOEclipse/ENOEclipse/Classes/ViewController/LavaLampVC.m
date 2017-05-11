@@ -276,7 +276,10 @@
 }
 
 - (void)delayMethod:(NSString *)strResult{
-    NSString *str2 = [NSString stringWithFormat:@"03080%d%@",speedValue,[strResult substringFromIndex:28]];
+    if (speedValue == 0) {
+        speedValue = 1;
+    }
+    NSString *str2 = [NSString stringWithFormat:@"0308%@0%d",[strResult substringFromIndex:28],speedValue];
     [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeCustom value:str2 pageNum:2];
 }
 

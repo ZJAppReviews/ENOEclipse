@@ -64,7 +64,7 @@
     CGFloat value = sender.value;
     NSLog(@"%f", value);
     lightValue = round(value*10);
-    NSLog(@"speedValue>>>>%d", lightValue);
+    NSLog(@"LanternValue>>>>%d", lightValue);
     sender.value = lightValue/10.0;
 }
 

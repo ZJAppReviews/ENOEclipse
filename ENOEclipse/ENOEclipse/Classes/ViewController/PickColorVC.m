@@ -96,7 +96,7 @@
 //修改按钮背景颜色
 - (void)setButtonBackgroudColor:(CGPoint)point {
     UIColor *color = [imageColor colorAtPixel:point];
-    bt_random.backgroundColor = color;
+//    bt_random.backgroundColor = color;
 }
 
 //轻击手势触发方法
@@ -145,13 +145,15 @@
 }
 
 - (void)showLightWithHexColor {
-    NSString *str = hexColor;
-    NSString *strResult = [NSString stringWithFormat:@"%@%@%@%@%@%@",str,str,str,str,str,str];
-    //发出指令
-    NSString *str1 = [NSString stringWithFormat:@"0407%@",[strResult substringToIndex:28]];
-    [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str1 pageNum:1];
-    
-    [self performSelector:@selector(delayMethod:) withObject:strResult afterDelay:0.2];
+    if ([self isCennectedLight]) {
+        NSString *str = hexColor;
+        NSString *strResult = [NSString stringWithFormat:@"%@%@%@%@%@%@",str,str,str,str,str,str];
+        //发出指令
+        NSString *str1 = [NSString stringWithFormat:@"0407%@",[strResult substringToIndex:28]];
+        [[BLEService sharedInstance] setBLEPageWithType:BLEOrderTypeBreathe value:str1 pageNum:1];
+        
+        [self performSelector:@selector(delayMethod:) withObject:strResult afterDelay:0.2];
+    }
 }
 
 

@@ -95,12 +95,20 @@
 
 - (void)clickedButton:(UIButton *)sender {
     if ([self isCennectedLight]) {
-        //发出指令
-        NSString *hex = [[NSString alloc] initWithFormat:@"%x",minute];
-        if (hex.length==1) {
-            hex = [NSString stringWithFormat:@"0%@",hex];
+        sender.selected = !sender.selected;
+        if (sender.selected) {
+            [sender setTitle:@"CANCEL" forState:UIControlStateNormal];
+            NSString *hex = [[NSString alloc] initWithFormat:@"%x",minute];
+            if (hex.length==1) {
+                hex = [NSString stringWithFormat:@"0%@",hex];
+            }
+            [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeSleep value:[NSString stringWithFormat:@"06%@",hex]];
         }
-        [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeSleep value:[NSString stringWithFormat:@"06%@",hex]];
+        else {
+            [sender setTitle:@"START" forState:UIControlStateNormal];
+            //发出指令
+            [[BLEService sharedInstance] writeOrderWithType:BLEOrderTypeClose];
+        }
     }
 }
 

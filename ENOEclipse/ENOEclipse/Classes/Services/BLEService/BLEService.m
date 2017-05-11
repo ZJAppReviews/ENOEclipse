@@ -210,7 +210,7 @@ static BLEService *_instance = nil;
 //开始扫描
 - (void)startScanConnectBLE {
     //停止之前的连接
-    [_babyBluetooth cancelAllPeripheralsConnection];
+//    [_babyBluetooth cancelAllPeripheralsConnection];
     //设置委托后直接可以使用，无需等待CBCentralManagerStatePoweredOn状态。
     _babyBluetooth.scanForPeripherals().begin();
 }
@@ -234,11 +234,13 @@ static BLEService *_instance = nil;
 //断开所有连接
 - (void)cancelAllBLEConnection {
     [_babyBluetooth cancelAllPeripheralsConnection];
+    _isConnected = NO;
 }
 
 //断开连接
 -(void)cancelBLEConnection:(CBPeripheral *)peripheral{
     [_babyBluetooth cancelPeripheralConnection:peripheral];
+    _isConnected = NO;
 }
 
 //连接ble
@@ -357,7 +359,7 @@ static BLEService *_instance = nil;
     
     //设置设备连接成功的委托,同一个baby对象，使用不同的channel切换委托回调
     [_babyBluetooth setBlockOnConnectedAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral) {
-//        [weakSelf pauseScanBLE];
+        [weakSelf pauseScanBLE];
         DLog(@"设备：%@--连接成功",peripheral.name);
         if (weakSelf.connectBlock) {
 //            [SVProgressHUD showInfoWithStatus:@"connected BLE succeed"];
@@ -377,9 +379,13 @@ static BLEService *_instance = nil;
     //设置设备断开连接的委托
     [_babyBluetooth setBlockOnDisconnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
         DLog(@"设备：%@--断开连接",peripheral.name);
+        _isConnected = NO;
         if (weakSelf.disConnectBlock) {
-            _isConnected = NO;
             weakSelf.disConnectBlock();
+        }
+        if (weakSelf.connectFailBlock) {
+            _isConnected = NO;
+            weakSelf.connectFailBlock();
         }
     }];
     
