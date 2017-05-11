@@ -88,9 +88,9 @@
     min = width*0.25;
     max = width/2;
     //亮度
-    [self addLanternSlider];
+    [self addLanternSlider:0.7];
     //速度
-    [self addSpeedSlider];
+    [self addSpeedSlider:0.5];
 }
 
 //修改按钮背景颜色

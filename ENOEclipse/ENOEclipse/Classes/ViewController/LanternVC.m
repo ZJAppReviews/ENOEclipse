@@ -28,10 +28,10 @@
 //    [self addCircle];
     
     //亮度
-    [self addLanternSlider];
+    [self addLanternSlider:1.0];
     
     //速度
-    [self addSpeedSlider];
+    [self addSpeedSlider:0.5];
 }
 
 - (void)didReceiveMemoryWarning {

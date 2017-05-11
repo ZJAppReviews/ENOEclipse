@@ -28,10 +28,10 @@
 
 
 //亮度
-- (void)addLanternSlider;
+- (void)addLanternSlider:(CGFloat)maxValue;
 
 //速度
-- (void)addSpeedSlider;
+- (void)addSpeedSlider:(CGFloat)maxValue;
 
 //判断连接状态
 - (BOOL)isCennectedLight;

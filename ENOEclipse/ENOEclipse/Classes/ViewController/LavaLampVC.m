@@ -59,7 +59,7 @@
     }
     
     //速度
-    [self addSpeedSlider];
+    [self addSpeedSlider:0.6];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
