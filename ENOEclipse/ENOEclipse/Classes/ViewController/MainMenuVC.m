@@ -155,13 +155,7 @@
 }
 
 -(void)showVc:(NSInteger)index {
-    if (index == 10003) {
-        if ([self isCennectedLight]) {
-            //发出指令
-            [[BLEService sharedInstance] writeOrderWithType:BLEOrderTypeUrgency];
-        }
-    }
-    else if (index == 10004) {
+    if (index == 10004) {
         if ([self isCennectedLight]) {
             [[BLEService sharedInstance] writeOrderWithType:BLEOrderTypeClose];
         }

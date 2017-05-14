@@ -28,10 +28,10 @@
 //    [self addCircle];
     
     //亮度
-    [self addLanternSlider:1.0];
+    [self addLanternSlider:0.0 max:1.0];
     
     //速度
-    [self addSpeedSlider:0.5];
+    [self addSpeedSlider:0.0 max:0.5];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,19 +57,30 @@
 
 - (void)sliderChangeLantern:(UISlider *)sender {
     [super sliderChangeLantern:sender];
+    
     imgCircle.image = [UIImage imageNamed:[NSString stringWithFormat: @"circle%d",lightValue]];
     if ([self isCennectedLight]) {
-        //发出指令
-        [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeLight value:[NSString stringWithFormat:@"010%d0%d",lightValue,speedValue]];
+        [self sendBLEOrder];
     }
 }
 
 - (void)sliderChangeSpeed:(UISlider *)sender {
     [super sliderChangeSpeed:sender];
     if ([self isCennectedLight]) {
-        //发出指令
-        [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeLight value:[NSString stringWithFormat:@"010%d0%d",lightValue,speedValue]];
+        [self sendBLEOrder];
     }
+}
+
+- (void)sendBLEOrder {
+    NSString *strOrder;
+    if (lightValue == 10) {
+        strOrder = [NSString stringWithFormat:@"010A0%d",speedValue];
+    }
+    else {
+        strOrder = [NSString stringWithFormat:@"010%d0%d",lightValue,speedValue];
+    }
+    //发出指令
+    [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeLight value:strOrder];
 }
 
 @end

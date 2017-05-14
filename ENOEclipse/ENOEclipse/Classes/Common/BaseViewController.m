@@ -41,10 +41,10 @@
 }
 
 //亮度
-- (void)addLanternSlider:(CGFloat)maxValue {
+- (void)addLanternSlider:(CGFloat)minValue max:(CGFloat)maxValue {
     CGRect frame = CGRectMake(VIEW_MARGIN, heightView-105, widthView - VIEW_MARGIN*2, 20);
     sliderCircle = [[UISlider alloc] initWithFrame:frame];
-    sliderCircle.minimumValue = 0.0;
+    sliderCircle.minimumValue = minValue;
     sliderCircle.maximumValue = maxValue;
     sliderCircle.value = lightValue/10.0;
     sliderCircle.continuous = NO;//默认YES  如果设置为NO，则每次滑块停止移动后才触发事件
@@ -69,10 +69,10 @@
 }
 
 //速度
-- (void)addSpeedSlider:(CGFloat)maxValue {
+- (void)addSpeedSlider:(CGFloat)minValue max:(CGFloat)maxValue {
     CGRect speedFrame = CGRectMake(VIEW_MARGIN, heightView-50, widthView - VIEW_MARGIN*2, 20);
     UISlider * speedSlider = [[UISlider alloc] initWithFrame:speedFrame];
-    speedSlider.minimumValue = 0;
+    speedSlider.minimumValue = minValue;
     speedSlider.maximumValue = maxValue;
     speedSlider.value = speedValue/10.0;
     speedSlider.continuous = NO;//默认YES  如果设置为NO，则每次滑块停止移动后才触发事件

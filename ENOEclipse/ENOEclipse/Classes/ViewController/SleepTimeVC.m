@@ -13,6 +13,8 @@
 @interface SleepTimeVC () {
     UILabel *lb_time;
     int minute;
+    
+    YYCircleSlider *slider;
 }
 
 @end
@@ -35,7 +37,7 @@
 //    imgView.center = CGPointMake(widthView/2, heightView*0.45);
 //    [self.view addSubview:imgView];
     
-    YYCircleSlider *slider = [[YYCircleSlider alloc] initWithFrame:CGRectMake(0, 0, widthView*0.85, widthView*0.85)];
+    slider = [[YYCircleSlider alloc] initWithFrame:CGRectMake(0, 0, widthView*0.85, widthView*0.85)];
     slider.center = CGPointMake(widthView/2, heightView*0.48);
     slider.lineWidth = 20;
     
@@ -106,8 +108,9 @@
         }
         else {
             [sender setTitle:@"START" forState:UIControlStateNormal];
+            [slider changeAngle:0];
             //发出指令
-            [[BLEService sharedInstance] writeOrderWithType:BLEOrderTypeClose];
+            [[BLEService sharedInstance] setBLEWithType:BLEOrderTypeSleep value:@"0600"];
         }
     }
 }

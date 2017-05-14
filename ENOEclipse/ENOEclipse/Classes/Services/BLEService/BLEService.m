@@ -478,9 +478,8 @@ static BLEService *_instance = nil;
     [_babyBluetooth notify:currPeripheral
   characteristic:notifiyCharacteristic
            block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
-               DLog(@"监听通知通道,读取的值:%@",characteristics.value);
-               return;
-//               [self dealReadData:characteristics.value];
+        DLog(@"监听通知通道,读取的值:%@",characteristics.value);
+        [self dealReadData:characteristics.value];
     }];
 }
 
@@ -511,6 +510,7 @@ static BLEService *_instance = nil;
     NSData *data = [self getBLEOrderType:orderType value:string];
     if (data) {
         NSString *str = [NSString stringWithFormat:@"下发指令-%@:%@", orderSetNames[orderType],[BabyToy convertDataToHexStr:data]];
+        NSLog(@"%@",str);
         if (self.startBlock) {
             self.startBlock(str);
         }
@@ -523,6 +523,7 @@ static BLEService *_instance = nil;
     NSData *data = [self getBLEOrderPageType:orderType value:string pageNum:page ];
     if (data) {
         NSString *str = [NSString stringWithFormat:@"下发指令-%@:%@", orderSetNames[orderType],[BabyToy convertDataToHexStr:data]];
+        NSLog(@"%@",str);
         if (self.startBlock) {
             self.startBlock(str);
         }

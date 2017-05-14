@@ -26,9 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     inputColors = [[NSMutableDictionary alloc] init];
-    //#ED1D24   #9E1F63  #1C75BC  #00A79E   #00A651  #FFF200  #000000
-    colorList = @[[UIColor colorWithHex:0xED1D24],[UIColor colorWithHex:0x9E1F63],[UIColor colorWithHex:0x1C75BC],[UIColor colorWithHex:0x00A79E],[UIColor colorWithHex:0x00A651],[UIColor colorWithHex:0xFFF200],[UIColor colorWithHex:0x000000]];
-    colorValues = @[@"ED1D24",@"9E1F63",@"1C75BC",@"00A79E",@"00A651",@"FFF200",@"000000"];
+    //红：FF0000，紫色：FF00FF，蓝：0000FF，青：00FFFF，绿：00FF00，黄：FFFF00，黑：000000
+    colorList = @[[UIColor colorWithHex:0xFF0000],[UIColor colorWithHex:0xFF00FF],[UIColor colorWithHex:0x0000FF],[UIColor colorWithHex:0x00FFFFE],[UIColor colorWithHex:0x00FF00],[UIColor colorWithHex:0xFFFF00],[UIColor colorWithHex:0x000000]];
+    colorValues = @[@"FF0000",@"FF00FF",@"0000FF",@"00FFFF",@"00FF00",@"FFFF00",@"000000"];
     
     //功能按钮
     NSInteger w = (widthView-4*VIEW_MARGIN)/2;
@@ -59,7 +59,7 @@
     }
     
     //速度
-    [self addSpeedSlider:0.6];
+    [self addSpeedSlider:0.1 max:0.6];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
