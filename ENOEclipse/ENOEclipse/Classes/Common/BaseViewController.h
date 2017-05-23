@@ -21,6 +21,7 @@
     int heightView;
     
     int lightValue;
+    UISlider * speedSlider;
     int speedValue;
 }
 

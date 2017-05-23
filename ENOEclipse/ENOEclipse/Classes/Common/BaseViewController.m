@@ -71,7 +71,10 @@
 //速度
 - (void)addSpeedSlider:(CGFloat)minValue max:(CGFloat)maxValue {
     CGRect speedFrame = CGRectMake(VIEW_MARGIN, heightView-50, widthView - VIEW_MARGIN*2, 20);
-    UISlider * speedSlider = [[UISlider alloc] initWithFrame:speedFrame];
+    if (speedSlider) {
+        [speedSlider removeFromSuperview];
+    }
+    speedSlider = [[UISlider alloc] initWithFrame:speedFrame];
     speedSlider.minimumValue = minValue;
     speedSlider.maximumValue = maxValue;
     speedSlider.value = speedValue/10.0;

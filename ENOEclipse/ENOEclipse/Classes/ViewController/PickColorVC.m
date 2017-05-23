@@ -56,7 +56,7 @@
     imgView = [[UIImageView alloc] initWithFrame:imgRect];
     imageColor = [self OriginImage:[UIImage imageNamed:@"color_pick"] scaleToSize:CGSizeMake(width, width/630*427)] ;
     imgView.image = imageColor;
-    imgView.center = CGPointMake(widthView/2, heightView/3);
+    imgView.center = CGPointMake(widthView/2, heightView/2.6);
     imgView.userInteractionEnabled = YES;
     [self.view addSubview:imgView];
     
@@ -76,7 +76,7 @@
     CGFloat btWidth = widthView*0.28;
     bt_random = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btWidth, btWidth)];
     bt_random.layer.cornerRadius = btWidth/2;
-    bt_random.center = CGPointMake(widthView/2, heightView*0.45);
+    bt_random.center = CGPointMake(widthView/2, heightView*0.51);
     [bt_random setBackgroundImage:[UIImage imageNamed:@"bt_random"] forState:UIControlStateNormal];
     [bt_random setBackgroundImage:[UIImage imageNamed:@"bt_random_light"] forState:UIControlStateHighlighted];
     [bt_random addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -88,7 +88,7 @@
     min = width*0.25;
     max = width/2;
     //亮度
-    [self addLanternSlider:0.1 max:0.5];
+//    [self addLanternSlider:0.1 max:0.5];
     //速度
     [self addSpeedSlider:0.1 max:0.7];
 }

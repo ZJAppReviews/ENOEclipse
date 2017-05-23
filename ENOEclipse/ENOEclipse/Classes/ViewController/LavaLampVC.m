@@ -36,7 +36,7 @@
     for (int i=0; i<4; i++) {
         int row = i/2;
         int sec = i%2;
-        CGRect rect = CGRectMake(VIEW_MARGIN+(VIEW_MARGIN*2+w)*sec, VIEW_MARGIN+(VIEW_MARGIN*2+h)*row, w, h);
+        CGRect rect = CGRectMake(VIEW_MARGIN+(VIEW_MARGIN*2+w)*sec, VIEW_MARGIN+(VIEW_MARGIN*3+h)*row, w, h);
         
         UIView *view = [[UIView alloc] initWithFrame:rect];
         view.layer.borderWidth = 1;
@@ -57,9 +57,6 @@
         bt.tag = i+1;
         [view addSubview:bt];
     }
-    
-    //速度
-    [self addSpeedSlider:0.1 max:0.6];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -94,8 +91,7 @@
 
 - (void)showCutomeView {
     if (setView) {
-        setView.hidden = NO;
-        return;
+        [setView removeFromSuperview];
     }
     int setViewH = heightView-60;
     setView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, widthView, setViewH)];
@@ -188,6 +184,9 @@
     [bt_save setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [bt_save addTarget:self action:@selector(clickedSaveButton:) forControlEvents:UIControlEventTouchUpInside];
     [setView addSubview:bt_save];
+    
+    //速度
+    [self addSpeedSlider:0.1 max:0.6];
 }
 
 
@@ -301,7 +300,8 @@
 
 - (void)handUpateView {
     if (setView) {
-        setView.hidden = YES;
+        [setView removeFromSuperview];
+        [speedSlider removeFromSuperview];
     }
 }
 
