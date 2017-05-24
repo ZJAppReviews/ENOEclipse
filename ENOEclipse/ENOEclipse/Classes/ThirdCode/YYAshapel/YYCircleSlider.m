@@ -7,6 +7,7 @@
 //
 
 #import "YYCircleSlider.h"
+#import "UIColor+YY.h"
 
 #define ToRad(deg) 		( (M_PI * (deg)) / 180.0 )
 #define ToDeg(rad)		( (180.0 * (rad)) / M_PI )
@@ -39,7 +40,7 @@
     
     //1.绘制灰色的背景
     CGContextAddArc(context, self.frame.size.width/2, self.frame.size.height/2, radius, ToRad(_startAngle), ToRad(_endAngle), 0);
-    [[UIColor lightGrayColor] setStroke];
+    [[UIColor colorGragLight] setStroke];
     CGContextSetLineWidth(context, _lineWidth);
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextDrawPath(context, kCGPathStroke);
@@ -47,7 +48,7 @@
     
     //2.绘制进度
     CGContextAddArc(context, self.frame.size.width/2, self.frame.size.height/2,radius,ToRad(_startAngle), ToRad(_startAngle-_angle), 0);
-    [[UIColor grayColor] setStroke];
+    [[UIColor colorMainLight] setStroke];
     CGContextSetLineWidth(context, _lineWidth);
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextDrawPath(context, kCGPathStroke);
@@ -55,7 +56,7 @@
     //3.绘制拖动小块
     CGPoint handleCenter =  [self pointFromAngle: (_startAngle-self.angle)];
     CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 3,[UIColor clearColor].CGColor);
-    [[UIColor darkGrayColor] setStroke];
+    [[UIColor colorGrag] setStroke];
     CGContextSetLineWidth(context, _lineWidth);
     CGContextAddEllipseInRect(context, CGRectMake(handleCenter.x, handleCenter.y, _lineWidth, _lineWidth));
     CGContextDrawPath(context, kCGPathStroke);

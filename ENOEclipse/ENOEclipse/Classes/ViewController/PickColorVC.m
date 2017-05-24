@@ -91,6 +91,8 @@
 //    [self addLanternSlider:0.1 max:0.5];
     //速度
     [self addSpeedSlider:0.1 max:0.7];
+    CGRect rect = speedSlider.frame;
+    speedSlider.frame = CGRectMake(rect.origin.x, CGRectGetMaxY(imgView.frame)+heightView*0.1, rect.size.width, rect.size.height);
 }
 
 //修改按钮背景颜色

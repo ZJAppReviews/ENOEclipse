@@ -98,12 +98,22 @@
     setView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:setView];
     //选择颜色
-    colorView = [[UIView alloc] initWithFrame:CGRectMake(VIEW_MARGIN*2, 15, widthView-VIEW_MARGIN*4, 60)];
+    colorView = [[UIView alloc] initWithFrame:CGRectMake(VIEW_MARGIN*2, -10, widthView-VIEW_MARGIN*4, 80)];
+    colorView.layer.borderWidth = 0.5;
+    colorView.layer.borderColor = [UIColor colorCutLine].CGColor;
+    colorView.layer.cornerRadius = 8;
     [setView addSubview:colorView];
+    UILabel *lb_title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, widthView-VIEW_MARGIN*4, 20)];
+    lb_title.text = @"Pick you color";
+    lb_title.textColor = [UIColor darkGrayColor];
+    lb_title.textAlignment = NSTextAlignmentCenter;
+    [colorView addSubview:lb_title];
+    CGFloat lb_y = CGRectGetMaxY(lb_title.frame)+15;
+    
     NSInteger count = colorList.count;
-    int colorWidth = (CGRectGetWidth(colorView.frame)-(count-1)*VIEW_MARGIN)/count;
+    int colorWidth = (CGRectGetWidth(colorView.frame)-(count+1)*VIEW_MARGIN)/count;
     for(int j=0; j<count; j++){
-        CGRect rect = CGRectMake((VIEW_MARGIN+colorWidth)*j, 0, colorWidth, colorWidth);
+        CGRect rect = CGRectMake(VIEW_MARGIN+(VIEW_MARGIN+colorWidth)*j, lb_y, colorWidth, colorWidth);
         UIButton *bt = [[UIButton alloc] initWithFrame:rect];
         bt.layer.borderWidth = 0.5;
         bt.layer.borderColor = [UIColor colorMainLight].CGColor;
@@ -159,7 +169,24 @@
         bt.layer.borderColor = [UIColor colorMainLight].CGColor;
         bt.layer.cornerRadius = w/2;
         [bt addTarget:self action:@selector(clickedSetButton:) forControlEvents:UIControlEventTouchUpInside];
-        bt.tag = i;
+        int tag = i;
+        switch (i) {
+            case 2:
+                tag = 5;
+                break;
+            case 3:
+                tag = 2;
+                break;
+            case 4:
+                tag = 4;
+                break;
+            case 5:
+                tag = 3;
+                break;
+            default:
+                break;
+        }
+        bt.tag = tag;
         [setView addSubview:bt];
     }
     //中间大圆
@@ -173,20 +200,23 @@
     //        [bt addTarget:self action:@selector(clickedSetButton:) forControlEvents:UIControlEventTouchUpInside];
     [setView addSubview:bt];
     //保存按钮
-    CGRect saveFrame = CGRectMake(VIEW_MARGIN, heightView-120, widthView - VIEW_MARGIN*2, 44);
+    CGRect saveFrame = CGRectMake(widthView/4, heightView-65, widthView/2, 50);
     UIButton *bt_save = [UIButton buttonWithType:UIButtonTypeCustom];
     bt_save.frame = saveFrame;
     bt_save.layer.borderWidth = 0.5;
-    bt_save.layer.borderColor = [UIColor colorMainLight].CGColor;
+    bt_save.layer.borderColor = [UIColor colorCutLine].CGColor;
     bt_save.layer.cornerRadius = 5;
     
-    [bt_save setTitle:@"SAVE SURRENT" forState:UIControlStateNormal];
+    [bt_save setTitle:@"SAVE CURRENT" forState:UIControlStateNormal];
     [bt_save setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [bt_save addTarget:self action:@selector(clickedSaveButton:) forControlEvents:UIControlEventTouchUpInside];
     [setView addSubview:bt_save];
     
     //速度
     [self addSpeedSlider:0.1 max:0.6];
+    CGRect rectSpeed = speedSlider.frame;
+    speedSlider.frame = CGRectMake(rectSpeed.origin.x, heightView-115, rectSpeed.size.width, rectSpeed.size.height);
+    
 }
 
 
@@ -217,7 +247,7 @@
     BOOL isAuto = NO;
     if (!name) {
         isAuto = YES;
-        name = @"Latly Setting";
+        name = @"Last";
     }
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:3];
     [dic setObject:[self getColorListSting] forKey:@"color"];
@@ -254,7 +284,8 @@
         colorView.hidden = YES;
         
         NSString *value = colorValues[tag];
-        [inputColors setObject:value forKey:[NSString stringWithFormat:@"%d",(int)currButton.tag]];
+        int lightTag = (int)currButton.tag;
+        [inputColors setObject:value forKey:[NSString stringWithFormat:@"%d",lightTag]];
         
         [self dealOrder];
     }
@@ -300,6 +331,7 @@
 
 - (void)handUpateView {
     if (setView) {
+        [inputColors removeAllObjects];
         [setView removeFromSuperview];
         [speedSlider removeFromSuperview];
     }

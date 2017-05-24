@@ -29,7 +29,7 @@
     bt.layer.cornerRadius = 40;
     [bt setTitleColor:[UIColor colorMainLight] forState:UIControlStateNormal];
     [bt setTitleColor:[UIColor colorGrag] forState:UIControlStateHighlighted];
-    [bt setTitle:@"SAVE SURRENT" forState:UIControlStateNormal];
+    [bt setTitle:@"SAVE CURRENT" forState:UIControlStateNormal];
     bt.titleLabel.font = [UIFont systemFontOfSize:26];
     [bt addTarget:self action:@selector(clickeSave:) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:bt];
