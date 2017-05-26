@@ -45,9 +45,9 @@
         [self.view addSubview:view];
         
         UIButton *bt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, w, h)];
-        [bt setTitle:[NSString stringWithFormat:@"PRESENT FUNCTION #%d",i+1] forState:UIControlStateNormal];
+        [bt setTitle:[NSString stringWithFormat:@"PRESENT\nFUNCTION #%d",i+1] forState:UIControlStateNormal];
         if (i == 3) {//
-            [bt setTitle:[NSString stringWithFormat:@"BUILD YOUR OWN MODE"] forState:UIControlStateNormal];
+            [bt setTitle:[NSString stringWithFormat:@"BUILD YOUR\nOWN MODE"] forState:UIControlStateNormal];
         }
         [bt setTitleColor:[UIColor colorMainLight] forState:UIControlStateNormal];
         [bt setTitleColor:[UIColor colorGrag] forState:UIControlStateHighlighted];
@@ -94,11 +94,11 @@
         [setView removeFromSuperview];
     }
     int setViewH = heightView-60;
-    setView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, widthView, setViewH)];
+    setView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, widthView, heightView)];
     setView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:setView];
     //选择颜色
-    colorView = [[UIView alloc] initWithFrame:CGRectMake(VIEW_MARGIN*2, -10, widthView-VIEW_MARGIN*4, 80)];
+    colorView = [[UIView alloc] initWithFrame:CGRectMake(VIEW_MARGIN*2, 0, widthView-VIEW_MARGIN*4, 75)];
     colorView.layer.borderWidth = 0.5;
     colorView.layer.borderColor = [UIColor colorCutLine].CGColor;
     colorView.layer.cornerRadius = 8;
@@ -200,7 +200,7 @@
     //        [bt addTarget:self action:@selector(clickedSetButton:) forControlEvents:UIControlEventTouchUpInside];
     [setView addSubview:bt];
     //保存按钮
-    CGRect saveFrame = CGRectMake(widthView/4, heightView-65, widthView/2, 50);
+    CGRect saveFrame = CGRectMake(widthView/4, heightView-70, widthView/2, 50);
     UIButton *bt_save = [UIButton buttonWithType:UIButtonTypeCustom];
     bt_save.frame = saveFrame;
     bt_save.layer.borderWidth = 0.5;
